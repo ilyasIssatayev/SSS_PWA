@@ -8,9 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule, MatCardModule, MatButtonModule } from  '@angular/material';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { IntroCardComponent } from './components/intro-card/intro-card.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    IntroCardComponent
   ],
   imports: [
     BrowserModule,

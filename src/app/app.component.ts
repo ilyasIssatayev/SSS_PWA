@@ -8,6 +8,9 @@ import { Item, ApiService } from './services/api.service';
 export class AppComponent implements OnInit{
   title = 'firstpwa';
   items: Array<Item>;
+
+  timeRemaining: 0;
+
   constructor(private apiService: ApiService) {}
   ngOnInit() {
     this.fetchData();
