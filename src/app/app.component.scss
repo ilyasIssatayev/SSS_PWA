@@ -3,7 +3,7 @@
     height: 100%;
     width: 100%;
 
-    grid-template-rows:1fr 1fr 1fr 1fr;
+    grid-template-rows:3fr 3fr 3fr 1fr;
     grid-template-columns: 1fr;
     grid-template-areas:
     "main"
@@ -22,7 +22,7 @@
 }
 .space{
     grid-area: main;
-    background-color: green;
+
     justify-self: center;
     align-self: center;
 
