@@ -9,10 +9,12 @@ import { MatToolbarModule, MatCardModule, MatButtonModule } from  '@angular/mate
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { IntroCardComponent } from './components/intro-card/intro-card.component';
+import { MainNavigationMenuComponent } from './main-navigation-menu/main-navigation-menu.component';
 @NgModule({
   declarations: [
     AppComponent,
-    IntroCardComponent
+    IntroCardComponent,
+    MainNavigationMenuComponent
   ],
   imports: [
     BrowserModule,
