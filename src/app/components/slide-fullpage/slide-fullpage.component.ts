@@ -17,12 +17,17 @@ export class SlideFullpageComponent implements OnInit {
 
       // fullpage options
       licenseKey: 'YOUR LICENSE KEY HERE',
-      anchors: ['History', 'Prediction', 'Ranking', 'VEM', 'lastPage'],
+      anchors: ['main', 'Prediction', 'Ranking', 'VEM', 'lastPage'],
       menu: '#menu',
+      paddingTop: 10,
+      controlArrows: false,
+      dragAndMove: true,
+      scrollingSpeed: 500,
 
       // fullpage callbacks
       afterResize: () => {
-        console.log("After resize");
+        //this.renderer.appendChild(this.fp_directive.nativeElement, section);
+        //this.fullpage_api.build(); // <-- here
       },
       afterLoad: (origin, destination, direction) => {
         console.log(origin.index);

@@ -1,12 +1,19 @@
 <!-- app.component.html -->
 
 
+<div class="mainArea">
+  <div fullpage id="fullpage" [options]="config" (ref)="getRef($event)" style="height:90vh;" class="fp">
+    <div class="section" fp-auto-height>
+      <div class="slide" style="background-color: green">Slide 2.1</div>
+      <div class="slide">
+          <app-graph-line></app-graph-line>
+      </div>
+      <div class="slide" style="background-color: red">Slide 2.3</div>
+      <div class="slide" style="background-color: purple">Slide 2.3</div>
+    </div>
+  </div>
 
-<div fullpage id="fullpage" [options]="config" (ref)="getRef($event)">
-	<div class="section">
-		<div class="slide">Slide 2.1</div>
-		<div class="slide">Slide 2.2</div>
-    <div class="slide">Slide 2.3</div>
-    <div class="slide">Slide 2.3</div>
-	</div>
+  <app-main-navigation-menu [fullpage_api]="fullpage_api" class="nm"></app-main-navigation-menu>
+
 </div>
+
