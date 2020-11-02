@@ -9,10 +9,14 @@ import { MatToolbarModule, MatCardModule, MatButtonModule } from  '@angular/mate
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { IntroCardComponent } from './components/intro-card/intro-card.component';
+import { AngularFullpageModule } from '@fullpage/angular-fullpage';
+import { SlideFullpageComponent } from './components/slide-fullpage/slide-fullpage.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    IntroCardComponent
+    IntroCardComponent,
+    SlideFullpageComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +26,7 @@ import { IntroCardComponent } from './components/intro-card/intro-card.component
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
+    AngularFullpageModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
