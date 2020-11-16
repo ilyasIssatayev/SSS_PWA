@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,Injectable } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,12 +12,14 @@ import { IntroCardComponent } from './components/intro-card/intro-card.component
 import { AngularFullpageModule } from '@fullpage/angular-fullpage';
 import { SlideFullpageComponent } from './components/slide-fullpage/slide-fullpage.component';
 import { MainNavigationMenuComponent } from './main-navigation-menu/main-navigation-menu.component';
+import { GraphLineComponent } from './components/graph-line/graph-line.component';
 @NgModule({
   declarations: [
     AppComponent,
     IntroCardComponent,
     SlideFullpageComponent,
     MainNavigationMenuComponent,
+    GraphLineComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,8 @@ import { MainNavigationMenuComponent } from './main-navigation-menu/main-navigat
     MatCardModule,
     MatButtonModule,
     AngularFullpageModule,
+
+
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
