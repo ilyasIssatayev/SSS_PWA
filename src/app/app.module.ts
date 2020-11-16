@@ -13,6 +13,7 @@ import { AngularFullpageModule } from '@fullpage/angular-fullpage';
 import { SlideFullpageComponent } from './components/slide-fullpage/slide-fullpage.component';
 import { MainNavigationMenuComponent } from './main-navigation-menu/main-navigation-menu.component';
 import { GraphLineComponent } from './components/graph-line/graph-line.component';
+
 @NgModule({
   declarations: [
     AppComponent,
