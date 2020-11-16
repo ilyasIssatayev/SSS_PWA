@@ -5,7 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { MatToolbarModule, MatCardModule, MatButtonModule } from  '@angular/material';
+import { MatToolbarModule, MatCardModule, MatButtonModule,MatFormFieldModule,MatIconModule,MatInputModule } from '@angular/material';
+import {ReactiveFormsModule} from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { IntroCardComponent } from './components/intro-card/intro-card.component';
@@ -13,6 +14,7 @@ import { AngularFullpageModule } from '@fullpage/angular-fullpage';
 import { SlideFullpageComponent } from './components/slide-fullpage/slide-fullpage.component';
 import { MainNavigationMenuComponent } from './main-navigation-menu/main-navigation-menu.component';
 import { GraphLineComponent } from './components/graph-line/graph-line.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { GraphLineComponent } from './components/graph-line/graph-line.component
     SlideFullpageComponent,
     MainNavigationMenuComponent,
     GraphLineComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,8 +34,10 @@ import { GraphLineComponent } from './components/graph-line/graph-line.component
     MatCardModule,
     MatButtonModule,
     AngularFullpageModule,
-
-
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
