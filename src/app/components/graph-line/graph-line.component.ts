@@ -10,7 +10,7 @@ export class GraphLineComponent implements AfterViewInit  {
 
 
 
-  @ViewChild('lineCanvas') lineCanvas;
+  @ViewChild('lineCanvas',{ static: false}) lineCanvas;
 
   title = 'Charts.js in Angular 9';
   barChart: any;
