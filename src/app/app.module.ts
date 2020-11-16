@@ -11,12 +11,13 @@ import { environment } from '../environments/environment';
 import { IntroCardComponent } from './components/intro-card/intro-card.component';
 import { AngularFullpageModule } from '@fullpage/angular-fullpage';
 import { SlideFullpageComponent } from './components/slide-fullpage/slide-fullpage.component';
-
+import { MainNavigationMenuComponent } from './main-navigation-menu/main-navigation-menu.component';
 @NgModule({
   declarations: [
     AppComponent,
     IntroCardComponent,
-    SlideFullpageComponent
+    SlideFullpageComponent,
+    MainNavigationMenuComponent,
   ],
   imports: [
     BrowserModule,
