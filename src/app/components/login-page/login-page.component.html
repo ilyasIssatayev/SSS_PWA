@@ -7,20 +7,21 @@
         <div class="example-container2">
             <mat-form-field appearance="fill">
               <mat-label>Enter your email</mat-label>
-              <input matInput placeholder="pat@example.com" [formControl]="email" required>
+              <input #accountInput matInput placeholder="pat@example.com" [formControl]="email" required (input)="updateAccount($event)">
               <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
           </div>
       <div class="example-container">
         <mat-form-field appearance="fill" class="passwordField">
           <mat-label>Enter your password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'">
+          <input #passwordInput matInput [type]="hide ? 'password' : 'text'" (input)="updatePassword($event)">
         </mat-form-field>
       </div>
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" class=" hide-btn " [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
 
+          <button mat-raised-button class="login" (click)="onLogin()">Log In</button>
     </div>
 
 </div>

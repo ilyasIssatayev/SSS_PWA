@@ -35,8 +35,14 @@ grid-template-areas: " box ";
   ". txt ."
   ". af ."
   ". pf hb"
-  ". . .";
+  ". . login";
 
+}
+.login{
+  grid-area: login;
+
+  justify-self: center;
+  align-self: center;
 }
 
 .text{
