@@ -1,82 +1,77 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { WebService } from '../../services/web.service';
-import { Router } from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
-
-
-
+import { Component, OnInit } from "@angular/core";
+import { FormControl, Validators } from "@angular/forms";
+import { WebService } from "../../services/web.service";
+import { Router } from "@angular/router";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+  selector: "app-login-page",
+  templateUrl: "./login-page.component.html",
+  styleUrls: ["./login-page.component.scss"]
 })
 export class LoginPageComponent implements OnInit {
   hide = true;
 
-  email = new FormControl('', [Validators.required, Validators.email]);
+  email = new FormControl("", [Validators.required, Validators.email]);
 
   account;
   password;
 
   getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
+    if (this.email.hasError("required")) {
+      return "You must enter a value";
     }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+    return this.email.hasError("email") ? "Not a valid email" : "";
   }
 
-  constructor(private dataService: WebService, private router: Router,private _snackBar: MatSnackBar)
-  {
+  constructor(
+    private dataService: WebService,
+    private router: Router,
+    private _snackBar: MatSnackBar
+  ) {}
 
-  }
+  ngOnInit() {}
 
-  ngOnInit() {
-
-  }
-
-
-  updateAccount(event: any)
-  {
+  updateAccount(event: any) {
     this.account = event.target.value;
-    console.log("account: ",this.account)
+    console.log("account: ", this.account);
   }
 
-  updatePassword(event: any)
-  {
+  updatePassword(event: any) {
     this.password = event.target.value;
-    console.log("password: ",this.password )
+    console.log("password: ", this.password);
   }
 
-  onLogin(){
-    console.log("Login",{account:this.account,password:this.password} );
-    this.dataService.postLogin({account:this.account,password:this.password}).subscribe(
-      token => {
+  onLogin() {
+    console.log("Login", { account: this.account, password: this.password });
+    this.dataService
+      .postLogin({ account: this.account, password: this.password })
+      .subscribe(
+        token => {
+          console.log(token);
+          if (token != undefined && token != null) {
+            console.log("Huraaaaaaah");
+            this.router.navigateByUrl("main");
+          } else {
+            this._snackBar.open("Wrong Account or password", "OK", {
+              duration: 2000
+            });
+          }
+        },
+        error => {
+          console.log("ERROR", error);
 
-        console.log(token);
-        if(token != undefined && token!=null)
-        {
-          console.log("Huraaaaaaah")
-          this.router.navigateByUrl('main');
+          if (error.status === 400) {
+            this._snackBar.open("Wrong Account or password", "OK", {
+              duration: 10000
+            });
+          } else {
+            this._snackBar.open("Something went wrong", "OK", {
+              duration: 10000
+            });
+          }
         }
-        else{
-          this._snackBar.open("Wrong Account or password","OK",{duration:2000,})
-        }
-      }
-  ,
-  (error)=>{
-    console.log("ERROR" ,error)
-
-    if(error.status === 400)
-    {
-      this._snackBar.open("Wrong Account or password","OK",{duration:10000,})
-    }
-
-    else { this._snackBar.open("Something went wrong","OK",{duration:10000,}) }
+      );
   }
-  );
-  }
-
 }

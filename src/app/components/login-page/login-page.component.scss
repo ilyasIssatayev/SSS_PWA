@@ -1,17 +1,14 @@
+.main-space {
+  height: 100vh;
+  display: grid;
 
-.main-space{
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
 
-height: 100vh;
-display: grid;
-
-grid-template-columns: 1fr;
-grid-template-rows: 1fr;
-
-grid-template-areas: " box ";
-
+  grid-template-areas: " box ";
 }
 
-.box{
+.box {
   grid-area: box;
 
   height: 30vh;
@@ -32,46 +29,40 @@ grid-template-areas: " box ";
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-areas:
-  ". txt ."
-  ". af ."
-  ". pf hb"
-  ". . login";
-
+    ". txt ."
+    ". af ."
+    ". pf hb"
+    ". . login";
 }
-.login{
+.login {
   grid-area: login;
 
   justify-self: center;
   align-self: center;
 }
 
-.text{
-  grid-area:txt;
+.text {
+  grid-area: txt;
 
   color: white;
   font-size: 2rem;
   justify-self: center;
   align-self: center;
-
 }
 
-.hide-btn{
-  color:white;
-grid-area: hb;
-justify-self: start;
-align-self: center;
-
+.hide-btn {
+  color: white;
+  grid-area: hb;
+  justify-self: start;
+  align-self: center;
 }
 
-.example-container{
-
-
-
+.example-container {
   grid-area: pf;
   justify-self: center;
   align-self: center;
 }
-.example-container2{
+.example-container2 {
   grid-area: af;
   justify-self: center;
   align-self: center;

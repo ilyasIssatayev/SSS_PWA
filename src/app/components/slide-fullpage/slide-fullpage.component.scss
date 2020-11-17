@@ -1,19 +1,18 @@
-.mainArea{
-display: grid;
+.mainArea {
+  display: grid;
 
-grid-template-columns: 0fr 10fr 0fr;
-grid-template-rows: 1fr minmax(0,12fr) ;
-grid-template-areas:
-" . nm . "
-" . fp . "
-;
+  grid-template-columns: 0fr 10fr 0fr;
+  grid-template-rows: 1fr minmax(0, 12fr);
+  grid-template-areas:
+    " . nm . "
+    " . fp . ";
 }
 
-.fp{
-grid-area: fp;
-height: 100%;
+.fp {
+  grid-area: fp;
+  height: 100%;
 }
 
-.nm{
-grid-area: nm;
+.nm {
+  grid-area: nm;
 }
