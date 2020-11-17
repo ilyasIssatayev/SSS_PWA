@@ -49,6 +49,7 @@ export class LoginPageComponent implements OnInit {
       token => {
         console.log("Subscribe")
         console.log(token);
+
       }
   );;
   }

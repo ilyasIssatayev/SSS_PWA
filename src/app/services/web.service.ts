@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class WebService {
   url = "https://sedcon-backend.herokuapp.com";
-
+  token;
   constructor(private http: HttpClient) {
 
   }
