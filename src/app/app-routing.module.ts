@@ -4,7 +4,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { SlideFullpageComponent } from './components/slide-fullpage/slide-fullpage.component'
 
 const routes: Routes = [
-  { path: 'login', component: LoginPageComponent },
+  { path: '', component: LoginPageComponent },
   { path: 'main', component: SlideFullpageComponent }
 ];
 
