@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { MatToolbarModule, MatCardModule, MatButtonModule,MatFormFieldModule,MatIconModule,MatInputModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatButtonModule,MatFormFieldModule,MatIconModule,MatInputModule,MatSnackBarModule } from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -38,6 +38,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],

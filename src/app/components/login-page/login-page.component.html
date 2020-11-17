@@ -17,7 +17,7 @@
           <input #passwordInput matInput [type]="hide ? 'password' : 'text'" (input)="updatePassword($event)">
         </mat-form-field>
       </div>
-      <button mat-icon-button matSuffix  [attr.aria-label]="'Hide password'" class=" hide-btn " [attr.aria-pressed]="hide">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" class=" hide-btn " [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
 
