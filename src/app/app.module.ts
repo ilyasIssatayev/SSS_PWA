@@ -1,20 +1,32 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,Injectable } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule, Injectable } from "@angular/core";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { MatToolbarModule, MatCardModule, MatButtonModule,MatFormFieldModule,MatIconModule,MatInputModule,MatSnackBarModule } from '@angular/material';
-import {ReactiveFormsModule} from '@angular/forms';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import { IntroCardComponent } from './components/intro-card/intro-card.component';
-import { AngularFullpageModule } from '@fullpage/angular-fullpage';
-import { SlideFullpageComponent } from './components/slide-fullpage/slide-fullpage.component';
-import { MainNavigationMenuComponent } from './main-navigation-menu/main-navigation-menu.component';
-import { GraphLineComponent } from './components/graph-line/graph-line.component';
-import { LoginPageComponent } from './components/login-page/login-page.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule } from "@angular/common/http";
+import {
+  MatToolbarModule,
+  MatCardModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatSnackBarModule,
+  MatSlideToggleModule,
+  MatRadioModule,
+  MatCheckboxModule,
+} from "@angular/material";
+import { ReactiveFormsModule } from "@angular/forms";
+import { ServiceWorkerModule } from "@angular/service-worker";
+import { environment } from "../environments/environment";
+import { IntroCardComponent } from "./components/intro-card/intro-card.component";
+import { AngularFullpageModule } from "@fullpage/angular-fullpage";
+import { SlideFullpageComponent } from "./components/slide-fullpage/slide-fullpage.component";
+import { MainNavigationMenuComponent } from "./main-navigation-menu/main-navigation-menu.component";
+import { GraphLineComponent } from "./components/graph-line/graph-line.component";
+import { LoginPageComponent } from "./components/login-page/login-page.component";
+import { SettingsComponent } from "./components/settings/settings.component";
 
 @NgModule({
   declarations: [
@@ -24,6 +36,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     MainNavigationMenuComponent,
     GraphLineComponent,
     LoginPageComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,14 +47,19 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     MatCardModule,
     MatButtonModule,
     AngularFullpageModule,
+    MatCheckboxModule,
     MatFormFieldModule,
+    MatRadioModule,
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    MatSlideToggleModule,
+    ServiceWorkerModule.register("ngsw-worker.js", {
+      enabled: environment.production
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

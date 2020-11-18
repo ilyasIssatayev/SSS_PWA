@@ -14,10 +14,10 @@ export class SlideFullpageComponent implements OnInit {
     this.config = {
       // fullpage options
       licenseKey: "YOUR LICENSE KEY HERE",
-      anchors: ["main", "Prediction", "Ranking", "VEM", "lastPage"],
+      anchors: ["main", "settings", "Ranking", "VEM", "lastPage"],
       menu: "#menu",
       paddingTop: 10,
-      controlArrows: false,
+      controlArrows: true,
       dragAndMove: true,
       scrollingSpeed: 500,
 
@@ -34,6 +34,8 @@ export class SlideFullpageComponent implements OnInit {
 
   getRef(fullPageRef) {
     this.fullpage_api = fullPageRef;
+    this.fullpage_api.setAllowScrolling(false, 'down, up');
+    this.fullpage_api.setKeyboardScrolling(false, 'down, up');
   }
 
   ngOnInit() {}

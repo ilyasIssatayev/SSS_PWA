@@ -7,9 +7,9 @@
 
 
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 3fr 1fr 3fr 1fr 3fr 1fr;
+  grid-template-columns: 1fr 3fr 1fr 3fr 1fr 3fr 1fr 3fr 1fr;
   grid-template-areas:
-                        " . b1 . b2 . b3 ."
+                        " . b1 . b2 . b3 . b4 ."
 }
 
 .button{
@@ -30,4 +30,8 @@
 
 .b3{
     grid-area: b3;
+}
+
+.b4{
+  grid-area: b4;
 }

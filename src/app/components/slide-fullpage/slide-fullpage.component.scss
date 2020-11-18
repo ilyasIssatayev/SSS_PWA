@@ -4,15 +4,17 @@
   grid-template-columns: 0fr 10fr 0fr;
   grid-template-rows: 1fr minmax(0, 12fr);
   grid-template-areas:
-    " . nm . "
-    " . fp . ";
+    " . fp . "
+    " . nm . ";
 }
 
 .fp {
   grid-area: fp;
-  height: 100%;
+  height: 90vh !important;
+
 }
 
 .nm {
   grid-area: nm;
+  height: 10vh;
 }
