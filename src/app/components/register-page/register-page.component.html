@@ -1,10 +1,19 @@
 <div class="main-space">
   <div class="box">
-    <div class="text">
-      Login Page
+    <div class="name">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your Name</mat-label>
+        <input
+          #accountInput
+          matInput
+          placeholder="Ferdi"
+          required
+          (input)="updateName($event)"
+        />
+      </mat-form-field>
     </div>
 
-    <div class="example-container2">
+    <div class="email">
       <mat-form-field appearance="fill">
         <mat-label>Enter your email</mat-label>
         <input
@@ -18,7 +27,8 @@
         <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
       </mat-form-field>
     </div>
-    <div class="example-container">
+
+    <div class="password">
       <mat-form-field appearance="fill" class="passwordField">
         <mat-label>Enter your password</mat-label>
         <input
@@ -39,7 +49,12 @@
     >
       <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
     </button>
-    <button mat-raised-button class="register" (click)="onRegister()">Register</button>
-    <button mat-raised-button class="login" (click)="onLogin()">Log In</button>
+
+    <button mat-raised-button class="cancel" (click)="onFinish()">
+      Cancel
+    </button>
+    <button mat-raised-button class="finish" (click)="onFinish()">
+      Finish
+    </button>
   </div>
 </div>

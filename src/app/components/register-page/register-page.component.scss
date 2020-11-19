@@ -11,7 +11,7 @@
 .box {
   grid-area: box;
 
-  height: 30vh;
+  height: 50vh;
   width: 40vw;
 
   min-width: 300px;
@@ -27,24 +27,23 @@
 
   display: grid;
   grid-template-columns: 1fr 2fr 2fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
     ". txt txt ."
     ". af af ."
+    " . name name ."
     ". pf pf hb"
-    ". register login .";
+    ". cancel finish .";
 }
 
-.register {
-  grid-area: register;
-
+.cancel{
+  grid-area: cancel;
   justify-self: start;
   align-self: center;
 }
 
-.login {
-  grid-area: login;
-
+.finish{
+  grid-area: finish;
   justify-self: end;
   align-self: center;
 }
@@ -65,13 +64,18 @@
   align-self: center;
 }
 
-.example-container {
+.password {
   grid-area: pf;
   justify-self: center;
   align-self: center;
 }
-.example-container2 {
+.email {
   grid-area: af;
+  justify-self: center;
+  align-self: center;
+}
+.name{
+  grid-area: name;
   justify-self: center;
   align-self: center;
 }

@@ -27,6 +27,7 @@ import { MainNavigationMenuComponent } from "./main-navigation-menu/main-navigat
 import { GraphLineComponent } from "./components/graph-line/graph-line.component";
 import { LoginPageComponent } from "./components/login-page/login-page.component";
 import { SettingsComponent } from "./components/settings/settings.component";
+import { RegisterPageComponent } from './components/register-page/register-page.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SettingsComponent } from "./components/settings/settings.component";
     MainNavigationMenuComponent,
     GraphLineComponent,
     LoginPageComponent,
-    SettingsComponent
+    SettingsComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,
