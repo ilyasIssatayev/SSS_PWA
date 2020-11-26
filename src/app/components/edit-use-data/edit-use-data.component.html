@@ -1,0 +1,50 @@
+<div class="main-space">
+  <div class="box">
+    <div class="name">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your Name</mat-label>
+        <input
+          #accountInput
+          matInput
+          placeholder="Ivan"
+          number
+          (input)="updateName($event)"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="sname">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your Surname</mat-label>
+        <input
+          #accountInput
+          matInput
+          placeholder="Navalniy"
+          number
+          (input)="updateName($event)"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="hnumber">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your House Number</mat-label>
+          <input
+            #accountInput
+            matInput
+            placeholder="Ferdi"
+            number
+            (keypress)="numberOnly($event)"
+            (input)="updateName($event)"
+          />
+        </mat-form-field>
+      </div>
+
+    <button mat-raised-button class="cancel" (click)="onCancel()">
+      Skip
+    </button>
+    <button mat-raised-button class="finish" (click)="onApply()">
+      Apply
+    </button>
+  </div>
+</div>

@@ -16,6 +16,7 @@ import {
   MatSlideToggleModule,
   MatRadioModule,
   MatCheckboxModule,
+
 } from "@angular/material";
 import { ReactiveFormsModule } from "@angular/forms";
 import { ServiceWorkerModule } from "@angular/service-worker";
@@ -28,6 +29,7 @@ import { GraphLineComponent } from "./components/graph-line/graph-line.component
 import { LoginPageComponent } from "./components/login-page/login-page.component";
 import { SettingsComponent } from "./components/settings/settings.component";
 import { RegisterPageComponent } from './components/register-page/register-page.component';
+import { EditUseDataComponent } from './components/edit-use-data/edit-use-data.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { RegisterPageComponent } from './components/register-page/register-page.
     GraphLineComponent,
     LoginPageComponent,
     SettingsComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    EditUseDataComponent
   ],
   imports: [
     BrowserModule,

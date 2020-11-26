@@ -11,14 +11,6 @@
 .box {
   grid-area: box;
 
-  height: 50vh;
-  width: 40vw;
-
-  min-width: 300px;
-  max-width: 500px;
-
-  min-height: 300px;
-  max-height: 800px;
 
   justify-self: center;
   align-self: center;
@@ -30,9 +22,9 @@
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
     ". txt txt ."
-    ". af af ."
-    " . pf pf ."
-    ". dpf dpf hb"
+    ". name name ."
+    " . sname sname ."
+    ". hnumber hnumber ."
     ". cancel finish .";
 }
 
@@ -64,20 +56,13 @@
   align-self: center;
 }
 
-.password {
-  grid-area: pf;
+.hnumber {
+  grid-area: hnumber;
   justify-self: center;
   align-self: center;
 }
-
-.dpassword {
-  grid-area: dpf;
-  justify-self: center;
-  align-self: center;
-}
-
-.email {
-  grid-area: af;
+.sname {
+  grid-area: sname;
   justify-self: center;
   align-self: center;
 }

@@ -12,10 +12,19 @@ export class RegisterPageComponent implements OnInit {
   hide = true;
 
   email = new FormControl("", [Validators.required, Validators.email]);
+  duplicatePasswordCorrect = true;
+
 
   account;
   password;
   name;
+
+  config: any;
+  fullpage_api: any;
+
+
+
+
   getErrorMessage() {
     if (this.email.hasError("required")) {
       return "You must enter a value";
@@ -24,11 +33,37 @@ export class RegisterPageComponent implements OnInit {
     return this.email.hasError("email") ? "Not a valid email" : "";
   }
 
+  getRef(fullPageRef) {
+    this.fullpage_api = fullPageRef;
+    this.fullpage_api.setAllowScrolling(false, "down, up", "left", "right");
+    this.fullpage_api.setKeyboardScrolling(false, "down, up", "left", "right");
+  }
+
   constructor(
     private dataService: WebService,
     private router: Router,
     private _snackBar: MatSnackBar
-  ) {}
+  ) {
+    this.config = {
+      // fullpage options
+      licenseKey: "YOUR LICENSE KEY HERE",
+      anchors: [],
+      menu: "#menu",
+      paddingTop: 10,
+      controlArrows: true,
+      dragAndMove: true,
+      scrollingSpeed: 500,
+
+      // fullpage callbacks
+      afterResize: () => {
+        //this.renderer.appendChild(this.fp_directive.nativeElement, section);
+        //this.fullpage_api.build(); // <-- here
+      },
+      afterLoad: (origin, destination, direction) => {
+        console.log(origin.index);
+      }
+    };
+  }
 
   ngOnInit() {}
 
@@ -42,12 +77,23 @@ export class RegisterPageComponent implements OnInit {
     console.log("password: ", this.password);
   }
 
+  updateDuplicatePassword(event: any) {
+    this.duplicatePasswordCorrect = event.target.value === this.password;
+    console.log(this.duplicatePasswordCorrect);
+  }
+
   updateName(event: any) {
     this.name = event.target.value;
     console.log("name: ", this.name);
   }
 
+  onCancel() {
+    this.router.navigateByUrl("");
+  }
+
   onFinish() {
+    this.fullpage_api.moveSlideRight();
+    return;
     this.dataService
       .postRegister({
         account: this.account,
@@ -57,7 +103,6 @@ export class RegisterPageComponent implements OnInit {
         token => {
           console.log(token);
           if (token != undefined && token != null) {
-            this.router.navigateByUrl("main");
           } else {
             this._snackBar.open("Something went wrong", "OK", {
               duration: 2000
