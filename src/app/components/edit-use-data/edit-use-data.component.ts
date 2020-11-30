@@ -43,13 +43,18 @@ export class EditUseDataComponent implements OnInit {
   }
   onApply() {
     this.router.navigateByUrl("main");
+    this.sendUserData();
+
   }
 
   sendUserData() {
     //Updating User's first name
+    console.log("Sending USER DATA: ",this.name," / ",this.surname)
+
     this.dataService.postName({ name: this.name }).subscribe(
       data => {
         console.log(data);
+        console.log("<+++++++++++>")
       },
       error => {
         console.log("Error: ", error);
@@ -59,6 +64,7 @@ export class EditUseDataComponent implements OnInit {
     this.dataService.postSurname({ surname: this.surname }).subscribe(
       data => {
         console.log(data);
+        console.log("<+++++++++++>")
       },
       error => {
         console.log("Error: ", error);

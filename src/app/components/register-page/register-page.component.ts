@@ -102,9 +102,11 @@ export class RegisterPageComponent implements OnInit {
       .subscribe(
         token => {
           console.log(token);
+          this.dataService.setToken(token);
+
           if (token != undefined && token != null) {
             this.fullpage_api.moveSlideRight();
-            this.dataService.token = token;
+
           } else {
             this._snackBar.open("Something went wrong", "OK", {
               duration: 2000

@@ -20,8 +20,9 @@ export class WebService {
 
   httpOptionsToken= {
     headers: new HttpHeaders({
-      "Content-Type": "application/json",
-      'Authorization': `Bearer ${this.token}`
+      'Content-Type' : 'application/json; charset=utf-8',
+      'Accept'       : 'application/json',
+      'Authorization': `Bearer ${this.getToken()}`,
     })
   };
 
@@ -31,6 +32,12 @@ export class WebService {
       console.log("WARNING TOKEN IS /undefined/")
     }
     return this.token;
+  }
+
+  setToken(newToken)
+  {
+    this.token=newToken;
+    console.log(`Token set to ${ this.token }`)
   }
 
   postRegister(registerData): Observable<any> {
@@ -66,6 +73,8 @@ export class WebService {
   }
 
   postName(userData): Observable<any> {
+    console.log("HTTP_OPTIONS: ",this.httpOptionsToken.headers);
+
     let bodyToSend;
 
     bodyToSend = {
@@ -105,13 +114,13 @@ export class WebService {
   }
 
   getUserName(userData): Observable<any> {
-    return this.http.post<any>(
+    return this.http.get<any>(
       this.url + "/user/firstname",
       this.httpOptionsToken
     );
   }
   getSurname(userData): Observable<any> {
-    return this.http.post<any>(
+    return this.http.get<any>(
       this.url + "/user/lastname",
       this.httpOptionsToken
     );

@@ -16,7 +16,7 @@ export class SlideFullpageComponent implements OnInit {
     // for more details on config options please visit fullPage.js docs
     this.config = {
       // fullpage options
-      licenseKey: "YOUR LICENSE KEY HERE",
+      licenseKey: "0A9E7E6B-F20D4B1D-9056A152-EFBD3D42",
       anchors: ["main", "settings", "Ranking", "VEM", "lastPage"],
       menu: "#menu",
       paddingTop: 10,
@@ -30,7 +30,7 @@ export class SlideFullpageComponent implements OnInit {
         //this.fullpage_api.build(); // <-- here
       },
       afterLoad: (origin, destination, direction) => {
-        console.log(origin.index);
+        //console.log(origin.index);
       }
     };
   }
