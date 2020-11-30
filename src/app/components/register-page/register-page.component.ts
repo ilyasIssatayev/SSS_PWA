@@ -74,17 +74,14 @@ export class RegisterPageComponent implements OnInit {
 
   updatePassword(event: any) {
     this.password = event.target.value;
-    console.log("password: ", this.password);
   }
 
   updateDuplicatePassword(event: any) {
     this.duplicatePasswordCorrect = event.target.value === this.password;
-    console.log(this.duplicatePasswordCorrect);
   }
 
   updateName(event: any) {
     this.name = event.target.value;
-    console.log("name: ", this.name);
   }
 
   onCancel() {

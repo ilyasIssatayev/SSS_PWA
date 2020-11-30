@@ -64,7 +64,7 @@ export class EditUseDataComponent implements OnInit {
     this.dataService.putSurname({ surname: this.surname }).subscribe(
       data => {
         console.log(data);
-        console.log("<+++++++++++>")
+
       },
       error => {
         console.log("Error: ", error);

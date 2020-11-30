@@ -31,7 +31,9 @@ export class SlideFullpageComponent implements OnInit {
       },
       afterLoad: (origin, destination, direction) => {
         //console.log(origin.index);
-      }
+        this.updateUserData();
+      },
+
     };
   }
 
@@ -44,6 +46,11 @@ export class SlideFullpageComponent implements OnInit {
   ngOnInit() {
     console.log(this.dataService.token);
 
+    this.updateUserData();
+  }
+
+  updateUserData()
+  {
     this.dataService.getUserName({}).subscribe(name => {
       console.log(name);
       this.user_name = name.firstname;

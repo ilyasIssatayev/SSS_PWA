@@ -10,13 +10,15 @@
   >
     <div class="section" fp-auto-height>
       <div class="slide" style="background-color: lightblue">
-      {{user_name}}
-      {{user_surname}}
+        <p style="Margin-left:30vw;">Name: {{ user_name }}</p>
+        <p style="Margin-left:30vw;">Surname: {{ user_surname }}</p>
       </div>
-      <div class="slide">
+      <div class="slide" style="background-color: lightcoral">
+        <app-edit-use-data></app-edit-use-data>
+      </div>
+      <div class="slide" >
         <app-graph-line></app-graph-line>
       </div>
-      <div class="slide" style="background-color: lightblue">Slide 2.3</div>
       <div class="slide" style="background-color: lightblue">Slide 2.3</div>
     </div>
     <div class="section" fp-auto-height style="background-color: lightcoral">
