@@ -1,37 +1,68 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from "@angular/core";
+import { Router } from "@angular/router";
+import { WebService } from "src/app/services/web.service";
 @Component({
-  selector: 'app-edit-use-data',
-  templateUrl: './edit-use-data.component.html',
-  styleUrls: ['./edit-use-data.component.scss']
+  selector: "app-edit-use-data",
+  templateUrl: "./edit-use-data.component.html",
+  styleUrls: ["./edit-use-data.component.scss"]
 })
 export class EditUseDataComponent implements OnInit {
+  constructor(private dataService: WebService, private router: Router) {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   name;
+  surname;
+  houseNumber;
 
-  updateName(event)
-  {
+  @Input()
+  fullpage_api;
 
+  updateName(event) {
+    this.name = event.target.value;
+  }
+
+  updateSurname(event) {
+    this.surname = event.target.value;
+  }
+
+  updateHouseNumber(event) {
+    this.houseNumber = event.target.value;
   }
 
   numberOnly(event): boolean {
-    const charCode = (event.which) ? event.which : event.keyCode;
+    const charCode = event.which ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       return false;
     }
     return true;
-
   }
 
-  onCancel(){
-
+  onCancel() {
+    this.router.navigateByUrl("main");
   }
-  onApply(){
+  onApply() {
+    this.router.navigateByUrl("main");
+  }
 
+  sendUserData() {
+    //Updating User's first name
+    this.dataService.postName({ name: this.name }).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log("Error: ", error);
+      }
+    );
+    //Updating User's last name
+    this.dataService.postSurname({ surname: this.surname }).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log("Error: ", error);
+      }
+    );
   }
 }

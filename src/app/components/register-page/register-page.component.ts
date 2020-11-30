@@ -92,8 +92,8 @@ export class RegisterPageComponent implements OnInit {
   }
 
   onFinish() {
-    this.fullpage_api.moveSlideRight();
-    return;
+
+
     this.dataService
       .postRegister({
         account: this.account,
@@ -103,6 +103,8 @@ export class RegisterPageComponent implements OnInit {
         token => {
           console.log(token);
           if (token != undefined && token != null) {
+            this.fullpage_api.moveSlideRight();
+            this.dataService.token = token;
           } else {
             this._snackBar.open("Something went wrong", "OK", {
               duration: 2000

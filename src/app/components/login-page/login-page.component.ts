@@ -43,8 +43,7 @@ export class LoginPageComponent implements OnInit {
     console.log("password: ", this.password);
   }
 
-  onRegister()
-  {
+  onRegister() {
     this.router.navigateByUrl("register");
   }
 
@@ -56,6 +55,8 @@ export class LoginPageComponent implements OnInit {
           console.log(token);
           if (token != undefined && token != null) {
             this.router.navigateByUrl("main");
+            this.dataService.token = token;
+            console.log("TOKEN: "+token);
           } else {
             this._snackBar.open("Wrong Account or password", "OK", {
               duration: 2000

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-
+import { WebService } from "src/app/services/web.service";
 @Component({
   selector: "app-slide-fullpage",
   templateUrl: "./slide-fullpage.component.html",
@@ -9,7 +9,10 @@ export class SlideFullpageComponent implements OnInit {
   config: any;
   fullpage_api: any;
 
-  constructor() {
+  user_name;
+  user_surname;
+
+  constructor(private dataService: WebService) {
     // for more details on config options please visit fullPage.js docs
     this.config = {
       // fullpage options
@@ -34,9 +37,20 @@ export class SlideFullpageComponent implements OnInit {
 
   getRef(fullPageRef) {
     this.fullpage_api = fullPageRef;
-    this.fullpage_api.setAllowScrolling(false, 'down, up');
-    this.fullpage_api.setKeyboardScrolling(false, 'down, up');
+    this.fullpage_api.setAllowScrolling(false, "down, up");
+    this.fullpage_api.setKeyboardScrolling(false, "down, up");
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.dataService.token);
+
+    this.dataService.getUserName({}).subscribe(name => {
+      console.log(name);
+      this.user_name = name;
+    });
+    this.dataService.getSurname({}).subscribe(name => {
+      console.log(name);
+      this.user_surname = name;
+    });
+  }
 }

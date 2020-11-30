@@ -13,12 +13,27 @@ export class WebService {
   // Http Options
   httpOptions = {
     headers: new HttpHeaders({
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+
     })
   };
 
-  postRegister(registerData): Observable<any>
-  {
+  httpOptionsToken= {
+    headers: new HttpHeaders({
+      "Content-Type": "application/json",
+      'Authorization': `Bearer ${this.token}`
+    })
+  };
+
+
+  getToken() {
+    if (this.token === undefined) {
+      console.log("WARNING TOKEN IS /undefined/")
+    }
+    return this.token;
+  }
+
+  postRegister(registerData): Observable<any> {
     let bodyToSend;
 
     bodyToSend = {
@@ -48,6 +63,57 @@ export class WebService {
       bodyToSend,
       this.httpOptions
     );
+  }
 
+  postName(userData): Observable<any> {
+    let bodyToSend;
+
+    bodyToSend = {
+      name: userData.name
+    };
+    return this.http.put<any>(
+      this.url + "/user/firstname",
+      bodyToSend,
+      this.httpOptionsToken
+    );
+  }
+
+  postSurname(userData): Observable<any> {
+    let bodyToSend;
+
+    bodyToSend = {
+      lastname: userData.surname
+    };
+    return this.http.put<any>(
+      this.url + "/user/lastname",
+      bodyToSend,
+      this.httpOptionsToken
+    );
+  }
+
+  postHouseNumber(userData): Observable<any> {
+    let bodyToSend;
+
+    bodyToSend = {
+      lastname: userData.lastname
+    };
+    return this.http.put<any>(
+      this.url + "user/firstname",
+      bodyToSend,
+      this.httpOptionsToken
+    );
+  }
+
+  getUserName(userData): Observable<any> {
+    return this.http.post<any>(
+      this.url + "/user/firstname",
+      this.httpOptionsToken
+    );
+  }
+  getSurname(userData): Observable<any> {
+    return this.http.post<any>(
+      this.url + "/user/lastname",
+      this.httpOptionsToken
+    );
   }
 }
