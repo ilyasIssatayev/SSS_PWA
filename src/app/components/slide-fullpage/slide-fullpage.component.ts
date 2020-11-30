@@ -46,11 +46,11 @@ export class SlideFullpageComponent implements OnInit {
 
     this.dataService.getUserName({}).subscribe(name => {
       console.log(name);
-      this.user_name = name;
+      this.user_name = name.firstname;
     });
     this.dataService.getSurname({}).subscribe(name => {
       console.log(name);
-      this.user_surname = name;
+      this.user_surname = name.lastname;
     });
   }
 }

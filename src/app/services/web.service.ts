@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { retry, catchError, map } from "rxjs/operators";
 import { Observable } from "rxjs";
+
 @Injectable({
   providedIn: "root"
 })
@@ -13,31 +14,40 @@ export class WebService {
   // Http Options
   httpOptions = {
     headers: new HttpHeaders({
-      "Content-Type": "application/json",
-
+      "Content-Type": "application/json"
     })
   };
 
-  httpOptionsToken= {
+  httpOptionsToken = {
     headers: new HttpHeaders({
-      'Content-Type' : 'application/json; charset=utf-8',
-      'Accept'       : 'application/json',
-      'Authorization': `Bearer ${this.getToken()}`,
+      "Content-Type": "application/json; charset=utf-8",
+      Accept: "application/json",
+      Authorization: `Bearer ${this.getToken()}`
     })
   };
-
 
   getToken() {
-    if (this.token === undefined) {
-      console.log("WARNING TOKEN IS /undefined/")
+    let output=localStorage.getItem('local_token');
+
+    if (output === undefined) {
+      console.log("WARNING TOKEN IS /undefined/");
     }
-    return this.token;
+    console.log("GET TOKEN: ", output);
+    return output;
   }
 
-  setToken(newToken)
-  {
-    this.token=newToken;
-    console.log(`Token set to ${ this.token }`)
+  setToken(newToken) {
+    //this.token = newToken;
+    localStorage.setItem('local_token', newToken);
+
+    this.httpOptionsToken = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json",
+        Authorization: `Bearer ${this.getToken()}`
+      })
+    };
+    console.log(`Token set to ${this.token}`);
   }
 
   postRegister(registerData): Observable<any> {
@@ -72,13 +82,13 @@ export class WebService {
     );
   }
 
-  postName(userData): Observable<any> {
-    console.log("HTTP_OPTIONS: ",this.httpOptionsToken.headers);
+  putName(userData): Observable<any> {
+    console.log("HTTP_OPTIONS: ", this.httpOptionsToken.headers);
 
     let bodyToSend;
 
     bodyToSend = {
-      name: userData.name
+      firstname: userData.name
     };
     return this.http.put<any>(
       this.url + "/user/firstname",
@@ -87,7 +97,7 @@ export class WebService {
     );
   }
 
-  postSurname(userData): Observable<any> {
+  putSurname(userData): Observable<any> {
     let bodyToSend;
 
     bodyToSend = {

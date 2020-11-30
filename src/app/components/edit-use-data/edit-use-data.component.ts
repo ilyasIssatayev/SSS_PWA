@@ -51,7 +51,7 @@ export class EditUseDataComponent implements OnInit {
     //Updating User's first name
     console.log("Sending USER DATA: ",this.name," / ",this.surname)
 
-    this.dataService.postName({ name: this.name }).subscribe(
+    this.dataService.putName({ name: this.name }).subscribe(
       data => {
         console.log(data);
         console.log("<+++++++++++>")
@@ -61,7 +61,7 @@ export class EditUseDataComponent implements OnInit {
       }
     );
     //Updating User's last name
-    this.dataService.postSurname({ surname: this.surname }).subscribe(
+    this.dataService.putSurname({ surname: this.surname }).subscribe(
       data => {
         console.log(data);
         console.log("<+++++++++++>")
