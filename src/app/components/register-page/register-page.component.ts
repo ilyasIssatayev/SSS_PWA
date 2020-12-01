@@ -14,16 +14,13 @@ export class RegisterPageComponent implements OnInit {
   email = new FormControl("", [Validators.required, Validators.email]);
   duplicatePasswordCorrect = true;
 
-
   account;
   password;
+  dpassword;
   name;
 
   config: any;
   fullpage_api: any;
-
-
-
 
   getErrorMessage() {
     if (this.email.hasError("required")) {
@@ -46,7 +43,7 @@ export class RegisterPageComponent implements OnInit {
   ) {
     this.config = {
       // fullpage options
-      licenseKey: "YOUR LICENSE KEY HERE",
+      licenseKey: "0A9E7E6B-F20D4B1D-9056A152-EFBD3D42",
       anchors: [],
       menu: "#menu",
       paddingTop: 10,
@@ -60,24 +57,29 @@ export class RegisterPageComponent implements OnInit {
         //this.fullpage_api.build(); // <-- here
       },
       afterLoad: (origin, destination, direction) => {
-        console.log(origin.index);
+        //console.log(origin.index);
       }
     };
+  }
+
+  moveToMain() {
+    this.router.navigateByUrl("main");
   }
 
   ngOnInit() {}
 
   updateAccount(event: any) {
     this.account = event.target.value;
-    console.log("account: ", this.account);
   }
 
   updatePassword(event: any) {
     this.password = event.target.value;
+    this.duplicatePasswordCorrect = event.target.value === this.dpassword;
   }
 
   updateDuplicatePassword(event: any) {
     this.duplicatePasswordCorrect = event.target.value === this.password;
+    this.dpassword=event.target.value;
   }
 
   updateName(event: any) {
@@ -89,7 +91,12 @@ export class RegisterPageComponent implements OnInit {
   }
 
   onFinish() {
-
+    if (this.duplicatePasswordCorrect === false) {
+      this._snackBar.open("Passwors do not match", "OK", {
+        duration: 2000
+      });
+      return;
+    }
 
     this.dataService
       .postRegister({
@@ -103,7 +110,6 @@ export class RegisterPageComponent implements OnInit {
 
           if (token != undefined && token != null) {
             this.fullpage_api.moveSlideRight();
-
           } else {
             this._snackBar.open("Something went wrong", "OK", {
               duration: 2000

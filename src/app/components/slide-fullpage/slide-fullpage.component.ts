@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { WebService } from "src/app/services/web.service";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-slide-fullpage",
   templateUrl: "./slide-fullpage.component.html",
@@ -12,7 +13,7 @@ export class SlideFullpageComponent implements OnInit {
   user_name;
   user_surname;
 
-  constructor(private dataService: WebService) {
+  constructor(private dataService: WebService, private router: Router) {
     // for more details on config options please visit fullPage.js docs
     this.config = {
       // fullpage options
@@ -31,9 +32,11 @@ export class SlideFullpageComponent implements OnInit {
       },
       afterLoad: (origin, destination, direction) => {
         //console.log(origin.index);
-        this.updateUserData();
+        if (typeof this.dataService.getToken() != "undefined" && this.dataService.getToken() != "undefined") {this.updateUserData();}
       },
-
+      onLeave: (index, nextIndex, direction) => {
+         if (typeof this.dataService.getToken() != "undefined" && this.dataService.getToken() != "undefined") {this.updateUserData();}
+      }
     };
   }
 
@@ -43,21 +46,30 @@ export class SlideFullpageComponent implements OnInit {
     this.fullpage_api.setKeyboardScrolling(false, "down, up");
   }
 
-  ngOnInit() {
-    console.log(this.dataService.token);
-
-    this.updateUserData();
+  getFullpageAPI()
+  {
+    return this.fullpage_api;
   }
 
-  updateUserData()
-  {
+  ngOnInit() {
+
+
+    if (typeof this.dataService.getToken() === "undefined" || this.dataService.getToken() === "undefined") {
+      //console.log("MOVING BACK USER");
+      this.router.navigateByUrl("");
+
+    } else this.updateUserData();
+  }
+
+  updateUserData() {
     this.dataService.getUserName({}).subscribe(name => {
-      console.log(name);
       this.user_name = name.firstname;
     });
-    this.dataService.getSurname({}).subscribe(name => {
-      console.log(name);
-      this.user_surname = name.lastname;
-    });
+    this.dataService.getSurname({}).subscribe(
+      name => {
+        this.user_surname = name.lastname;
+      },
+      error => {}
+    );
   }
 }

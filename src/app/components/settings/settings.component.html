@@ -1,16 +1,18 @@
 <div class="settings-space">
   <div class="settings-list">
-      <mat-radio-group aria-label="Select an option">
-          Display Type:
-          <mat-radio-button value="1">Normal</mat-radio-button>
-          <mat-radio-button value="2">Colorblind A</mat-radio-button>
-          <mat-radio-button value="2">Colorblind B</mat-radio-button>
-          <mat-radio-button value="2">Colorblind C</mat-radio-button>
-        </mat-radio-group>
-        <mat-radio-group aria-label="Select an option">
-            Option 1:
-            <mat-radio-button value="1"></mat-radio-button>
+    <mat-radio-group aria-label="Select an option" style="float: left; width:100%; margin-bottom: 10px">
+      Display Type:
+      <mat-radio-button value="1">Normal</mat-radio-button>
+      <mat-radio-button value="2">Colorblind A</mat-radio-button>
+      <mat-radio-button value="3">Colorblind B</mat-radio-button>
+      <mat-radio-button value="4">Colorblind C</mat-radio-button>
+    </mat-radio-group>
 
-          </mat-radio-group>
+    <mat-radio-group aria-label="Select an option" style="float: left; width:100%; margin-bottom: 10px">
+      Participate in VEM:
+      <mat-radio-button value="1"> Yes </mat-radio-button>
+      <mat-radio-button value="2"> No </mat-radio-button>
+    </mat-radio-group>
+    <button mat-raised-button color="warn" class="login" (click)="onLogout()">Log Out</button>
   </div>
 </div>

@@ -10,11 +10,12 @@
   >
     <div class="section" fp-auto-height>
       <div class="slide" style="background-color: lightblue">
+        <p style="Margin-left:30vw;">Welcome</p>
         <p style="Margin-left:30vw;">Name: {{ user_name }}</p>
         <p style="Margin-left:30vw;">Surname: {{ user_surname }}</p>
       </div>
       <div class="slide" style="background-color: lightcoral">
-        <app-edit-use-data></app-edit-use-data>
+        <app-edit-user-info [userDataActivator]="this"></app-edit-user-info>
       </div>
       <div class="slide" >
         <app-graph-line></app-graph-line>
@@ -27,7 +28,7 @@
   </div>
 
   <app-main-navigation-menu
-    [fullpage_api]="fullpage_api"
+    [fullpage_api]="getFullpageAPI()"
     class="nm"
   ></app-main-navigation-menu>
 </div>

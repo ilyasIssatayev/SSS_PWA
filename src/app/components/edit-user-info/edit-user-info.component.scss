@@ -1,0 +1,78 @@
+.main-space {
+
+  display: grid;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+
+  grid-template-areas: " box ";
+}
+
+.box {
+  grid-area: box;
+
+
+  justify-self: center;
+  align-self: center;
+
+  background-color: lightblue;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr;
+  grid-template-rows: 0.1fr 1fr 1fr 1fr 1fr 3fr;
+  grid-template-areas:
+    ". txt txt ."
+    ". name name ."
+    " . sname sname ."
+    ". hnumber hnumber ."
+    ". cancel finish ."
+    " . . . .";
+}
+
+.cancel{
+  grid-area: cancel;
+  justify-self: start;
+  align-self: center;
+}
+
+.finish{
+  grid-area: finish;
+  justify-self: end;
+  align-self: center;
+}
+
+.text {
+  grid-area: txt;
+
+  color: white;
+  font-size: 2rem;
+  justify-self: center;
+  align-self: center;
+}
+
+.hide-btn {
+  color: white;
+  grid-area: hb;
+  justify-self: start;
+  align-self: center;
+}
+
+.hnumber {
+  grid-area: hnumber;
+  justify-self: center;
+  align-self: center;
+}
+.sname {
+  grid-area: sname;
+  justify-self: center;
+  align-self: center;
+}
+.name{
+  grid-area: name;
+  justify-self: center;
+  align-self: center;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}

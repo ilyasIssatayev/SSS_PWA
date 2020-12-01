@@ -27,9 +27,9 @@ export class WebService {
   };
 
   getToken() {
-    let output=localStorage.getItem('local_token');
+    let output = localStorage.getItem("local_token");
 
-    if (output === undefined) {
+    if (typeof output === "undefined" || output === null) {
       console.log("WARNING TOKEN IS /undefined/");
     }
     console.log("GET TOKEN: ", output);
@@ -38,7 +38,7 @@ export class WebService {
 
   setToken(newToken) {
     //this.token = newToken;
-    localStorage.setItem('local_token', newToken);
+    localStorage.setItem("local_token", newToken);
 
     this.httpOptionsToken = {
       headers: new HttpHeaders({

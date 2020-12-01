@@ -35,12 +35,10 @@ export class LoginPageComponent implements OnInit {
 
   updateAccount(event: any) {
     this.account = event.target.value;
-    console.log("account: ", this.account);
   }
 
   updatePassword(event: any) {
     this.password = event.target.value;
-    console.log("password: ", this.password);
   }
 
   onRegister() {
@@ -52,11 +50,9 @@ export class LoginPageComponent implements OnInit {
       .postLogin({ account: this.account, password: this.password })
       .subscribe(
         token => {
-          console.log(token);
           if (token != undefined && token != null) {
             this.router.navigateByUrl("main");
-            this.dataService.token = token;
-            console.log("TOKEN: "+token);
+            this.dataService.setToken( token );
           } else {
             this._snackBar.open("Wrong Account or password", "OK", {
               duration: 2000
@@ -64,7 +60,7 @@ export class LoginPageComponent implements OnInit {
           }
         },
         error => {
-          console.log("ERROR", error);
+          //console.log("ERROR", error);
 
           if (error.status === 400) {
             this._snackBar.open("Wrong Account or password", "OK", {

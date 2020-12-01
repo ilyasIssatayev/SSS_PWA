@@ -30,6 +30,7 @@ import { LoginPageComponent } from "./components/login-page/login-page.component
 import { SettingsComponent } from "./components/settings/settings.component";
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { EditUseDataComponent } from './components/edit-use-data/edit-use-data.component';
+import { EditUserInfoComponent } from './components/edit-user-info/edit-user-info.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { EditUseDataComponent } from './components/edit-use-data/edit-use-data.c
     LoginPageComponent,
     SettingsComponent,
     RegisterPageComponent,
-    EditUseDataComponent
+    EditUseDataComponent,
+    EditUserInfoComponent
   ],
   imports: [
     BrowserModule,
