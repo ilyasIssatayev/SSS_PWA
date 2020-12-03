@@ -16,8 +16,12 @@ import {
   MatSlideToggleModule,
   MatRadioModule,
   MatCheckboxModule,
+  MatChipsModule,
+  MatTableModule,
 
 } from "@angular/material";
+
+
 import { ReactiveFormsModule } from "@angular/forms";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
@@ -31,6 +35,7 @@ import { SettingsComponent } from "./components/settings/settings.component";
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { EditUseDataComponent } from './components/edit-use-data/edit-use-data.component';
 import { EditUserInfoComponent } from './components/edit-user-info/edit-user-info.component';
+import { VEMPageComponent } from './components/vem-page/vem-page.component';
 
 @NgModule({
   declarations: [
@@ -43,9 +48,12 @@ import { EditUserInfoComponent } from './components/edit-user-info/edit-user-inf
     SettingsComponent,
     RegisterPageComponent,
     EditUseDataComponent,
-    EditUserInfoComponent
+    EditUserInfoComponent,
+    VEMPageComponent
   ],
   imports: [
+    MatTableModule,
+    MatChipsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

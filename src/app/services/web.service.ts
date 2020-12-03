@@ -32,7 +32,7 @@ export class WebService {
     if (typeof output === "undefined" || output === null) {
       console.log("WARNING TOKEN IS /undefined/");
     }
-    console.log("GET TOKEN: ", output);
+    //console.log("GET TOKEN: ", output);
     return output;
   }
 
@@ -74,7 +74,7 @@ export class WebService {
       email: loginData.account,
       password: loginData.password
     };
-    console.log("Post: Login with loginData", bodyToSend);
+   // console.log("Post: Login with loginData", bodyToSend);
     return this.http.post<any>(
       this.url + "/login",
       bodyToSend,

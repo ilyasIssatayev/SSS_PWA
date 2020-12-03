@@ -10,6 +10,10 @@
   >
     <div class="section" fp-auto-height>
       <div class="slide" style="background-color: lightblue">
+        <app-vem-page></app-vem-page>
+      </div>
+
+      <div class="slide" style="background-color: lightblue">
         <p style="Margin-left:30vw;">Welcome</p>
         <p style="Margin-left:30vw;">Name: {{ user_name }}</p>
         <p style="Margin-left:30vw;">Surname: {{ user_surname }}</p>
@@ -17,7 +21,7 @@
       <div class="slide" style="background-color: lightcoral">
         <app-edit-user-info [userDataActivator]="this"></app-edit-user-info>
       </div>
-      <div class="slide" >
+      <div class="slide">
         <app-graph-line></app-graph-line>
       </div>
       <div class="slide" style="background-color: lightblue">Slide 2.3</div>

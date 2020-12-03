@@ -1,0 +1,41 @@
+.vem-space {
+  height: 100vh;
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-rows: 1fr 3fr 1fr 2fr 2fr;
+  grid-template-areas:
+    " . . . "
+    " . graph . "
+    " . form . "
+    " . table . "
+    " . . . ";
+}
+
+.graph {
+  grid-area: graph;
+  justify-self: center;
+  align-self: end;
+
+
+  width: 100%;
+}
+
+.activity_form{
+  grid-area: form;
+  justify-self: center;
+  align-self: start;
+
+}
+
+
+.table{
+  height: 100%;
+  width: 100%;
+
+  grid-area: table;
+  justify-self: center;
+  align-self: center;
+}
