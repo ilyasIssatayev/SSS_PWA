@@ -5,13 +5,19 @@
   display: grid;
 
   grid-template-columns: 1fr 8fr 1fr;
-  grid-template-rows: 1fr 3fr 1fr 2fr 2fr;
+  grid-template-rows: 0.5fr 5fr 1fr 2fr 2fr;
   grid-template-areas:
-    " . . . "
+    " . vem_txt . "
     " . graph . "
     " . form . "
     " . table . "
     " . . . ";
+}
+
+.vem_text{
+  grid-area: vem_txt;
+  justify-self: center;
+  align-self: center;
 }
 
 .graph {
@@ -19,7 +25,7 @@
   justify-self: center;
   align-self: end;
 
-
+  height: 100%;
   width: 100%;
 }
 

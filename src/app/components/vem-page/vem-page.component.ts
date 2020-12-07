@@ -29,7 +29,6 @@ export class VEMPageComponent implements OnInit {
     { item: "Out", cost: 10 },
     { item: "Current Balance", cost: 20 },
     { item: "Available Balance", cost: 400 },
-    { item: "Available Balance", cost: 400 },
   ];
 
   drop(event: CdkDragDrop<GraphStatus[]>) {
