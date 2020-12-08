@@ -12,6 +12,7 @@ export class SlideFullpageComponent implements OnInit {
 
   user_name;
   user_surname;
+  user_houseNumber;
 
   constructor(private dataService: WebService, private router: Router) {
     // for more details on config options please visit fullPage.js docs
@@ -62,12 +63,18 @@ export class SlideFullpageComponent implements OnInit {
   }
 
   updateUserData() {
-    this.dataService.getUserName({}).subscribe(name => {
-      this.user_name = name.firstname;
+    this.dataService.getUserName({}).subscribe(data => {
+      this.user_name = data.firstname;
     });
     this.dataService.getSurname({}).subscribe(
-      name => {
-        this.user_surname = name.lastname;
+      data => {
+        this.user_surname = data.lastname;
+      },
+      error => {}
+    );
+    this.dataService.getHouseNumber().subscribe(
+      data => {
+        this.user_houseNumber = data.house_number;
       },
       error => {}
     );

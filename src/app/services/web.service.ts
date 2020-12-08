@@ -114,10 +114,10 @@ export class WebService {
     let bodyToSend;
 
     bodyToSend = {
-      lastname: userData.lastname
+      house_number: userData.houseNumber
     };
     return this.http.put<any>(
-      this.url + "user/firstname",
+      this.url + "/user/house-number",
       bodyToSend,
       this.httpOptionsToken
     );
@@ -134,5 +134,12 @@ export class WebService {
       this.url + "/user/lastname",
       this.httpOptionsToken
     );
+  }
+
+  getHouseNumber(): Observable<any>{
+    return this.http.get<any>(
+      this.url + "/user/house-number",
+      this.httpOptionsToken
+    )
   }
 }

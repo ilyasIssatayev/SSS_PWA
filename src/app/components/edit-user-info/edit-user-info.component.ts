@@ -62,7 +62,7 @@ export class EditUserInfoComponent implements OnInit {
       data => {
         //console.log(data);
         success++;
-        if (success === 2) {
+        if (success === 3) {
           this._snackBar.open("Data has been changed", "OK", {
             duration: 1000
           });
@@ -77,7 +77,7 @@ export class EditUserInfoComponent implements OnInit {
       data => {
         //console.log(data);
         success++;
-        if (success === 2) {
+        if (success === 3) {
           this._snackBar.open("Data has been changed", "OK", {
             duration: 1000
           });
@@ -87,5 +87,20 @@ export class EditUserInfoComponent implements OnInit {
         //console.log("Error: ", error);
       }
     );
+
+    this.dataService.postHouseNumber( {houseNumber: this.houseNumber }).subscribe(
+      data => {
+        console.log(data, " ::: ",this.houseNumber);
+        success++;
+        if (success === 3) {
+          this._snackBar.open("Data has been changed", "OK", {
+            duration: 1000
+          });
+        }
+      },
+      error => {
+        //console.log("Error: ", error);
+      }
+    )
   }
 }

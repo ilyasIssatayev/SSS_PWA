@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from "@angular/core";
+import { Component, ViewChild, AfterViewInit, EventEmitter, Output, Input } from "@angular/core";
 import { Chart } from "chart.js";
 
 @Component({
@@ -16,6 +16,11 @@ export class GraphLineComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.lineChartMethod();
+  }
+
+  @Input() onGraphChanged = new EventEmitter<boolean>();
+  setHide(){
+     this.onGraphChanged.emit(true);
   }
 
   lineChartMethod() {
