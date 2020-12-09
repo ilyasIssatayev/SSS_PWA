@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { retry, catchError, map } from "rxjs/operators";
 import { Observable } from "rxjs";
 
@@ -143,15 +143,24 @@ export class WebService {
       this.httpOptionsToken
     );
   }
-  getVemBalance() {
-    let options = {
+  getVemBalance(date) {
+
+    return this.http.get<any>(`${this.url}/vem/balance?start=${date.moth}-${date.day}-${date.year}`, {
       headers: new HttpHeaders({
         "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json",
-        Authorization: `Bearer ${this.getToken()}`,
+        Accept: "none",
+        Authorization: `Bearer ${this.getToken()}`
+      })}
+    );
+  }
+  getVemBalanceRange(start_date,end_date) {
 
-      })
-    };
-    return this.http.get<any>(this.url + "/vem/balance", options);
+    return this.http.get<any>(`${this.url}/vem/balance?start=${start_date.moth}-${start_date.day}-${start_date.year}&end=${end_date.moth}-${end_date.day}-${end_date.year}`, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "none",
+        Authorization: `Bearer ${this.getToken()}`
+      })}
+    );
   }
 }

@@ -63,6 +63,9 @@ export class SlideFullpageComponent implements OnInit {
   }
 
   updateUserData() {
+    this.dataService.getVemBalance({year:2018, month: 12, day: 8}).subscribe(data => {
+      console.log(data);
+    });
     this.dataService.getUserName({}).subscribe(data => {
       this.user_name = data.firstname;
     });

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 import { Chart } from "chart.js";
-
+import { WebService } from "src/app/services/web.service";
 export interface GraphStatus {
   name: string;
 }
@@ -16,7 +16,7 @@ export interface Transaction {
   styleUrls: ["./vem-page.component.scss"]
 })
 export class VEMPageComponent implements OnInit {
-  constructor() {}
+  constructor(private dataService: WebService) {}
   @ViewChild("lineCanvas", { static: false }) lineCanvas;
 
   title = "Charts.js in Angular 9";
@@ -37,16 +37,35 @@ export class VEMPageComponent implements OnInit {
   transactions: Transaction[] = [
     { item: "In", cost: 41 },
     { item: "Out", cost: 10 },
-    { item: "Total Balance", cost: 20 },
+    { item: "Total Balance", cost: 20 }
   ];
 
   ngAfterViewInit() {
-    this.lineChartMethod();
+    this.getVEMBalance(this.lineChartMethod);
   }
 
-  lineChartMethod() {
-    console.log("Line Chart ", this.currentGraphMode);
-    let active_data = [65, 59, 80, 81, 56, 55, 40, 10, 5, 50, 10, 15];
+  getVEMBalance(callback) {
+    console.log("getVEMBalance")
+    let output_data = [];
+    this.dataService
+      .getVemBalanceRange(
+        { year: 2018, moth: 12, day: 1 }, //Start Date
+        { year: 2018, moth: 12, day: 8 } //End Date
+      )
+      .subscribe(data => {
+        data.forEach(function(balance) {
+
+          output_data.push(balance.Balance);
+        });
+        console.log("Callback")
+        callback( output_data,this );
+      });
+  }
+
+  lineChartMethod(active_data, obj) {
+
+    console.log("Line Chart ", obj.currentGraphMode);
+    console.log("Data",active_data);
 
     let month_labels = [
       "January",
@@ -82,17 +101,17 @@ export class VEMPageComponent implements OnInit {
     ];
 
     let active_labels;
-    if (this.currentGraphMode === "Month") {
+    if (obj.currentGraphMode === "Month") {
       active_labels = month_labels;
     }
-    if (this.currentGraphMode === "Week") {
+    if (obj.currentGraphMode === "Week") {
       active_labels = week_labels;
     }
-    if (this.currentGraphMode === "Today") {
+    if (obj.currentGraphMode === "Today") {
       active_labels = today_labels;
     }
 
-    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+    obj.lineChart = new Chart(obj.lineCanvas.nativeElement, {
       type: "bar",
 
       data: {
@@ -104,10 +123,10 @@ export class VEMPageComponent implements OnInit {
             lineTension: 0.1,
             backgroundColor: "rgb(240, 128, 128,0.8)",
             borderColor: "rgb(240, 128, 128,0.8)",
-            borderCapStyle: "butt",
+
             borderDash: [],
             borderDashOffset: 0.0,
-            borderJoinStyle: "miter",
+
             pointBorderColor: "rgba(75,192,192,1)",
             pointBackgroundColor: "#fff",
             pointBorderWidth: 1,
@@ -126,8 +145,10 @@ export class VEMPageComponent implements OnInit {
   }
 
   updateChart() {
-    let active_data = [55, 40, 59, 80, 81, 56, 10, 5, 50, 10, 15, 65];
-
+    return;
+    let active_data = []
+    //this.getVEMBalance();
+    console.log("Data: ",active_data)
     let month_labels = [
       "January",
       "February",
