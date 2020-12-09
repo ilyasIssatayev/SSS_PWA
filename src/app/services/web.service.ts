@@ -74,7 +74,7 @@ export class WebService {
       email: loginData.account,
       password: loginData.password
     };
-   // console.log("Post: Login with loginData", bodyToSend);
+    // console.log("Post: Login with loginData", bodyToSend);
     return this.http.post<any>(
       this.url + "/login",
       bodyToSend,
@@ -124,6 +124,7 @@ export class WebService {
   }
 
   getUserName(userData): Observable<any> {
+    console.log("token: ", this.getToken());
     return this.http.get<any>(
       this.url + "/user/firstname",
       this.httpOptionsToken
@@ -136,10 +137,21 @@ export class WebService {
     );
   }
 
-  getHouseNumber(): Observable<any>{
+  getHouseNumber(): Observable<any> {
     return this.http.get<any>(
       this.url + "/user/house-number",
       this.httpOptionsToken
-    )
+    );
+  }
+  getVemBalance() {
+    let options = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json",
+        Authorization: `Bearer ${this.getToken()}`,
+
+      })
+    };
+    return this.http.get<any>(this.url + "/vem/balance", options);
   }
 }

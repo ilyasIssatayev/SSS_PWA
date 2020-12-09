@@ -4,7 +4,7 @@
 
   display: grid;
 
-  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-columns: 1fr minmax(0,8fr) 1fr;
   grid-template-rows: 0.5fr 5fr 1fr 2fr 2fr;
   grid-template-areas:
     " . vem_txt . "

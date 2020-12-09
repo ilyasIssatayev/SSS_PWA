@@ -37,8 +37,7 @@ export class VEMPageComponent implements OnInit {
   transactions: Transaction[] = [
     { item: "In", cost: 41 },
     { item: "Out", cost: 10 },
-    { item: "Current Balance", cost: 20 },
-    { item: "Available Balance", cost: 400 }
+    { item: "Total Balance", cost: 20 },
   ];
 
   ngAfterViewInit() {

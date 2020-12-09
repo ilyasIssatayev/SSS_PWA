@@ -1,0 +1,39 @@
+<div class="ehp-space">
+  <div class="ehp-text">Energy History Profile</div>
+  <canvas #lineCanvas class="graph" style="height: 100%; width: 100%"></canvas>
+  <div class="graph-conf">
+    <mat-card  class="gcspace">
+      <div class='date_text'>Configuration</div>
+      <mat-form-field class='date_end'>
+        <mat-label>Start Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="dp3"
+          disabled
+          (dateInput)="enterDateStart('input', $event)"
+          (dateChange)="enterDateStart('input', $event)"
+        />
+      </mat-form-field>
+      <div class="date_picker_start">
+          <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+          <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+      </div>
+
+      <mat-form-field class='date_start'>
+        <mat-label>End Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="dp2"
+          disabled
+          (dateInput)="enterDateEnd('input', $event)"
+          (dateChange)="enterDateEnd('input', $event)"
+        />
+      </mat-form-field>
+      <div class="date_picker_end">
+          <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
+          <mat-datepicker #dp2 disabled="false"></mat-datepicker>
+      </div>
+
+    </mat-card>
+  </div>
+</div>

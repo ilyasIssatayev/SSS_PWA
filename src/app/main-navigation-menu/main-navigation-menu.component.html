@@ -1,6 +1,6 @@
 <mat-card class="menu_body" >
-    <button mat-raised-button class="button b1" color="primary" (click)="fullpage_api.moveTo('main', 1); settings_name='Settings'">Button1</button>
-    <button mat-raised-button class="button b2" color="accent" (click)="fullpage_api.moveTo('main', 2); settings_name='Settings'">Button2</button>
-    <button mat-raised-button class="button b3" color="warn" (click)="fullpage_api.moveTo('main', 3); settings_name='Settings'">Button3</button>
+    <button mat-raised-button class="button b1" color="primary" (click)="fullpage_api.moveTo('main', 0); settings_name='Settings'">Main</button>
+    <button mat-raised-button class="button b2" color="primary" (click)="fullpage_api.moveTo('main', 1); settings_name='Settings'">Vem</button>
+    <button mat-raised-button class="button b3" color="primary" (click)="fullpage_api.moveTo('main', 2); settings_name='Settings'">History</button>
     <button mat-raised-button class="button b4" color="warn" (click)="onSettings()">{{settings_name}}</button>
 </mat-card>

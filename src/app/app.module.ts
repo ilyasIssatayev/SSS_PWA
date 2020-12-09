@@ -18,6 +18,9 @@ import {
   MatCheckboxModule,
   MatChipsModule,
   MatTableModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+
 
 } from "@angular/material";
 
@@ -36,6 +39,7 @@ import { RegisterPageComponent } from './components/register-page/register-page.
 import { EditUseDataComponent } from './components/edit-use-data/edit-use-data.component';
 import { EditUserInfoComponent } from './components/edit-user-info/edit-user-info.component';
 import { VEMPageComponent } from './components/vem-page/vem-page.component';
+import { EhpPageComponent } from './components/ehp-page/ehp-page.component';
 
 @NgModule({
   declarations: [
@@ -49,9 +53,12 @@ import { VEMPageComponent } from './components/vem-page/vem-page.component';
     RegisterPageComponent,
     EditUseDataComponent,
     EditUserInfoComponent,
-    VEMPageComponent
+    VEMPageComponent,
+    EhpPageComponent
   ],
   imports: [
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatTableModule,
     MatChipsModule,
     BrowserModule,
