@@ -16,10 +16,11 @@ export class SlideFullpageComponent implements OnInit {
 
   constructor(private dataService: WebService, private router: Router) {
     // for more details on config options please visit fullPage.js docs
+
     this.config = {
       // fullpage options
       licenseKey: "0A9E7E6B-F20D4B1D-9056A152-EFBD3D42",
-      anchors: ["main", "settings", "Ranking", "VEM", "lastPage"],
+      anchors: ["main", "settings"],
       menu: "#menu",
       paddingTop: 10,
       controlArrows: true,

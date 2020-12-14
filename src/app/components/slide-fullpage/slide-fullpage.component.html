@@ -1,5 +1,4 @@
 <!-- app.component.html -->
-
 <div class="mainArea">
   <div
     fullpage
@@ -8,35 +7,44 @@
     (ref)="getRef($event)"
     class="fp"
   >
+    <!--Main Pages Section-->
     <div class="section" fp-auto-height>
-        <div class="slide" style="background-color: lightblue">
-            <app-ehp-page></app-ehp-page>
-          </div>
+      <!--Energy History Profile-->
+      <div class="slide" style="background-color: lightblue">
+        <app-ehp-page></app-ehp-page>
+      </div>
+      <!--Suggestion Page-->
       <div class="slide" style="background-color: lightblue">
         <app-vem-page></app-vem-page>
       </div>
-
+      <!--Virtual Energy Market-->
       <div class="slide" style="background-color: lightblue">
         <p style="Margin-left:30vw;">Welcome</p>
         <p style="Margin-left:30vw;">Name: {{ user_name }}</p>
         <p style="Margin-left:30vw;">Surname: {{ user_surname }}</p>
         <p style="Margin-left:30vw;">HouseNumber: {{ user_houseNumber }}</p>
       </div>
+      <!--Prediction Page-->
       <div class="slide" style="background-color: lightcoral">
         <app-edit-user-info [userDataActivator]="this"></app-edit-user-info>
       </div>
+      <!--Ranking Page-->
       <div class="slide">
         <app-graph-line></app-graph-line>
       </div>
-      <div class="slide" style="background-color: lightblue">Slide 2.3</div>
     </div>
+   <!--Settings Section-->
     <div class="section" fp-auto-height style="background-color: lightcoral">
       <app-settings></app-settings>
     </div>
   </div>
-
+  <!--Navigation Menu-->
   <app-main-navigation-menu
     [fullpage_api]="getFullpageAPI()"
     class="nm"
-  ></app-main-navigation-menu>
+  >
+
+</app-main-navigation-menu>
 </div>
+
+

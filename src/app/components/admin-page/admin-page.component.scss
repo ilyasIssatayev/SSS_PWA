@@ -1,0 +1,52 @@
+@media (orientation: landscape) {
+  .admin-space {
+    background-color: lightblue;
+    width: 100vw;
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr 8fr 1fr;
+    grid-template-rows: 1fr 1fr 9fr 1fr;
+    grid-template-areas:
+    ". . . . ."
+      ". upload . . ."
+      ". ci . co ."
+      ". . . . .";
+  }
+}
+
+@media (orientation: portrait) {
+  .admin-space {
+    background-color: lightblue;
+    width: 100vw;
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: 1fr 12fr  1fr 1fr 1fr;
+    grid-template-rows: 1fr 8fr 1fr 8fr 1fr;
+    grid-template-areas:
+      ". .  . . ."
+      ". ci . upload ."
+      ". .  . . ."
+      ". co . . ."
+      ". .  . . .";
+  }
+}
+
+.csv-input {
+  grid-area: ci;
+  width: 100%;
+  height: 100%;
+}
+
+.csv-output {
+  grid-area: co;
+  width: 100%;
+  height: 100%;
+}
+
+.upload-btn{
+  grid-area: upload;
+  justify-self: center;
+  align-self: center;
+}

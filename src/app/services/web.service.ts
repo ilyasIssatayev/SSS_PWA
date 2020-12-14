@@ -20,8 +20,8 @@ export class WebService {
 
   httpOptionsToken = {
     headers: new HttpHeaders({
-      "Content-Type": "application/json; charset=utf-8",
-      Accept: "application/json",
+      'Content-Type': 'application/json; charset=utf-8',
+      Accept: 'application/json',
       Authorization: `Bearer ${this.getToken()}`
     })
   };
@@ -37,7 +37,6 @@ export class WebService {
   }
 
   setToken(newToken) {
-    //this.token = newToken;
     localStorage.setItem("local_token", newToken);
 
     this.httpOptionsToken = {
@@ -110,6 +109,19 @@ export class WebService {
     );
   }
 
+  putCSVTariff(userData): Observable<any> {
+    let bodyToSend;
+
+    bodyToSend = {
+      csv: userData.csv
+    };
+    return this.http.put<any>(
+      this.url + "/user/tariff",
+      bodyToSend,
+      this.httpOptionsToken
+    );
+  }
+
   postHouseNumber(userData): Observable<any> {
     let bodyToSend;
 
@@ -124,12 +136,14 @@ export class WebService {
   }
 
   getUserName(userData): Observable<any> {
-    console.log("token: ", this.getToken());
+
     return this.http.get<any>(
-      this.url + "/user/firstname",
+      this.url + '/user/firstname',
       this.httpOptionsToken
     );
+
   }
+
   getSurname(userData): Observable<any> {
     return this.http.get<any>(
       this.url + "/user/lastname",

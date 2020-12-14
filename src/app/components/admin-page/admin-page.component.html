@@ -1,0 +1,32 @@
+<div class="admin-space">
+  <div class="csv-input">
+    <mat-form-field style="width:100%; height: 100%!important;" class="example-full-width">
+      <mat-label >Enter Tariff</mat-label>
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="25"
+
+        placeholder="Enter Tariff"
+        style="width:100%; height: 100%; background-color: lightcoral"
+      ></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="csv-output">
+    <mat-form-field style="width:100%;" class="example-full-width">
+      <mat-label style="width:100%;">Enter Tariff</mat-label>
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="25"
+        readonly
+        placeholder="Enter Tariff"
+        style="width:100%; height: 100%; background-color: lightcoral"
+      ></textarea>
+    </mat-form-field>
+  </div>
+  <div class="upload-btn">
+      <button mat-raised-button color="warn" class="login" (click)="onUploadCSV()">Upload</button>
+  </div>
+</div>

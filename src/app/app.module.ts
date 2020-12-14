@@ -40,6 +40,7 @@ import { EditUseDataComponent } from './components/edit-use-data/edit-use-data.c
 import { EditUserInfoComponent } from './components/edit-user-info/edit-user-info.component';
 import { VEMPageComponent } from './components/vem-page/vem-page.component';
 import { EhpPageComponent } from './components/ehp-page/ehp-page.component';
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { EhpPageComponent } from './components/ehp-page/ehp-page.component';
     EditUseDataComponent,
     EditUserInfoComponent,
     VEMPageComponent,
-    EhpPageComponent
+    EhpPageComponent,
+    AdminPageComponent
   ],
   imports: [
     MatNativeDateModule,
