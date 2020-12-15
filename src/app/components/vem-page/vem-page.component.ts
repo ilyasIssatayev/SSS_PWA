@@ -49,8 +49,8 @@ export class VEMPageComponent implements OnInit {
     let output_data = [];
     this.dataService
       .getVemBalanceRange(
-        { year: 2018, moth: 12, day: 1 }, //Start Date
-        { year: 2018, moth: 12, day: 8 } //End Date
+        { year: 2020, moth: 12, day: 1 }, //Start Date
+        { year: 2020, moth: 12, day: 14 } //End Date
       )
       .subscribe(data => {
         data.forEach(function(balance) {

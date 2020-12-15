@@ -20,8 +20,8 @@ export class WebService {
 
   httpOptionsToken = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json; charset=utf-8',
-      Accept: 'application/json',
+      "Content-Type": "application/json; charset=utf-8",
+      Accept: "application/json",
       Authorization: `Bearer ${this.getToken()}`
     })
   };
@@ -136,12 +136,10 @@ export class WebService {
   }
 
   getUserName(userData): Observable<any> {
-
     return this.http.get<any>(
-      this.url + '/user/firstname',
+      this.url + "/user/firstname",
       this.httpOptionsToken
     );
-
   }
 
   getSurname(userData): Observable<any> {
@@ -158,23 +156,33 @@ export class WebService {
     );
   }
   getVemBalance(date) {
-
-    return this.http.get<any>(`${this.url}/vem/balance?start=${date.moth}-${date.day}-${date.year}`, {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "none",
-        Authorization: `Bearer ${this.getToken()}`
-      })}
+    return this.http.get<any>(
+      `${this.url}/vem/balance?start=${date.moth}-${date.day}-${date.year}`,
+      {
+        headers: new HttpHeaders({
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "none",
+          Authorization: `Bearer ${this.getToken()}`
+        })
+      }
     );
   }
-  getVemBalanceRange(start_date,end_date) {
-
-    return this.http.get<any>(`${this.url}/vem/balance?start=${start_date.moth}-${start_date.day}-${start_date.year}&end=${end_date.moth}-${end_date.day}-${end_date.year}`, {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "none",
-        Authorization: `Bearer ${this.getToken()}`
-      })}
+  getVemBalanceRange(start_date, end_date) {
+    return this.http.get<any>(
+      `${this.url}/vem/balance?start=${start_date.moth}-${start_date.day}-${start_date.year}&end=${end_date.moth}-${end_date.day}-${end_date.year}`,
+      {
+        headers: new HttpHeaders({
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "none",
+          Authorization: `Bearer ${this.getToken()}`
+        })
+      }
+    );
+  }
+  getTariff() {
+    return this.http.get<any>(
+      `${this.url}/admin/tariff`,
+      this.httpOptionsToken
     );
   }
 }
