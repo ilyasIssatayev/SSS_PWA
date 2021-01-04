@@ -20,7 +20,7 @@ export class SlideFullpageComponent implements OnInit {
     this.config = {
       // fullpage options
       licenseKey: "0A9E7E6B-F20D4B1D-9056A152-EFBD3D42",
-      anchors: ["main", "settings"],
+      anchors: ["main", "settings","profile"],
       menu: "#menu",
       paddingTop: 10,
       controlArrows: true,

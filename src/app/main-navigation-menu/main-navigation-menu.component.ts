@@ -10,7 +10,7 @@ export class MainNavigationMenuComponent implements OnInit {
   fullpage_api: any;
 
   settings_name = "Settings";
-
+  profile_name = "Profile";
   constructor() {}
 
   ngOnInit() {}
@@ -19,11 +19,24 @@ export class MainNavigationMenuComponent implements OnInit {
 
     if (this.settings_name === "Settings") {
       this.settings_name="Back";
-
+      this.profile_name="Profile";
       this.fullpage_api.moveTo("settings", 0);
     }
     else{
       this.settings_name="Settings";
+      this.fullpage_api.moveSectionUp();
+    }
+  }
+  onProfile() {
+
+    if (this.profile_name === "Profile") {
+      this.profile_name="Back";
+      this.settings_name="Settings";
+      this.fullpage_api.moveTo("profile", 0);
+    }
+    else{
+      this.profile_name="Profile";
+      this.fullpage_api.moveSectionUp();
       this.fullpage_api.moveSectionUp();
     }
   }
