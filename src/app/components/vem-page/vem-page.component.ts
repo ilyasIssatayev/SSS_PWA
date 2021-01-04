@@ -26,6 +26,9 @@ export class VEMPageComponent implements OnInit {
 
   currentGraphMode = "Today";
 
+  in_value: number;
+  out_value: number;
+
   graphStatuses: GraphStatus[] = [
     { name: "Today" },
     { name: "Week" },
@@ -35,37 +38,87 @@ export class VEMPageComponent implements OnInit {
   displayedColumns: string[] = ["item", "cost"];
 
   transactions: Transaction[] = [
+    //redo to balance only
     { item: "In", cost: 41 },
     { item: "Out", cost: 10 },
-    { item: "Total Balance", cost: 20 }
+    { item: "Total", cost: 20 }
   ];
 
   ngAfterViewInit() {
     this.getVEMBalance(this.lineChartMethod);
+    this.getVEMBalance(this.updateChart);
   }
 
   getVEMBalance(callback) {
-    console.log("getVEMBalance")
+    console.log("getVEMBalance");
     let output_data = [];
-    this.dataService
-      .getVemBalanceRange(
-        { year: 2020, moth: 12, day: 1 }, //Start Date
-        { year: 2020, moth: 12, day: 14 } //End Date
-      )
-      .subscribe(data => {
-        data.forEach(function(balance) {
+    let output_labels = [];
+    let date = new Date();
+    let t_date = new Date();
 
-          output_data.push(balance.Balance);
+    let day_range;
+    if (this.currentGraphMode === "Month") {
+      day_range = 31;
+    }
+    if (this.currentGraphMode === "Week") {
+      day_range = 7;
+    }
+    if (this.currentGraphMode === "Today") {
+      day_range = 1;
+    }
+    date.setDate(date.getDate() - 15);
+    t_date.setDate(t_date.getDate() - day_range- 15);
+
+    let current_date = {
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate()
+    };
+    let target_date = {
+      year: t_date.getFullYear(),
+      month: t_date.getMonth() + 1,
+      day: t_date.getDate()
+    };
+
+    console.log("Current date: ", current_date);
+    console.log("Target date: ", target_date);
+    this.getInOut(current_date, target_date);
+    if (day_range !== 1) {
+      this.dataService
+        .getVemBalanceRange(
+          target_date, //Start Date
+          current_date //End Date
+        )
+        .subscribe(data => {
+          data.forEach(function(balance) {
+            output_data.push(balance.Balance);
+            output_labels.push(balance.day);
+
+          });
+          console.log("Callback");
+          callback(output_data, output_labels, this);
         });
-        console.log("Callback")
-        callback( output_data,this );
-      });
+    }
+    if (day_range === 1) {
+      console.log("Range 1");
+      this.dataService
+        .getVemBalance(
+          current_date //End Date
+        )
+        .subscribe(data => {
+          data.forEach(function(balance) {
+            output_data.push(balance.Balance);
+            output_labels.push(balance.time);
+          });
+          console.log("Callback");
+          callback(output_data, output_labels, this);
+        });
+    }
   }
 
-  lineChartMethod(active_data, obj) {
-
+  lineChartMethod(active_data, a_labels, obj) {
     console.log("Line Chart ", obj.currentGraphMode);
-    console.log("Data",active_data);
+    console.log("Data", active_data);
 
     let month_labels = [
       "January",
@@ -136,7 +189,7 @@ export class VEMPageComponent implements OnInit {
             pointHoverBorderWidth: 3,
             pointRadius: 1,
             pointHitRadius: 3,
-            data: active_data,
+            data: a_labels,
             spanGaps: true
           }
         ]
@@ -144,59 +197,26 @@ export class VEMPageComponent implements OnInit {
     });
   }
 
-  updateChart() {
-    return;
-    let active_data = []
-    //this.getVEMBalance();
-    console.log("Data: ",active_data)
-    let month_labels = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "November",
-      "December"
-    ];
+  updateChart(active_data, a_labels, obj) {
 
-    let week_labels = [
-      "Monday",
-      "Tuesday",
-      "Wendsday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
-    ];
+    let active_labels = [];
 
-    let today_labels = [
-      "0:00-6:00",
-      "6:00-12:00",
-      "12:00-16:00",
-      "16:00-19:00",
-      "19:00-21:00",
-      "21:00-24:00"
-    ];
+    a_labels.forEach(element => {
+      let date = new Date(element);
+      if (obj.currentGraphMode === "Today") {
+        active_labels.push(date.getHours() + ":" + date.getMinutes());
+      }
+      if (obj.currentGraphMode === "Week") {
+        active_labels.push(date.getDate() + " / " + date.getMonth());
+      }
+      if (obj.currentGraphMode === "Month") {
+        active_labels.push(date.getDate() + " / " + date.getMonth());
+      }
+    });
 
-    let active_labels;
-    if (this.currentGraphMode === "Month") {
-      active_labels = month_labels;
-    }
-    if (this.currentGraphMode === "Week") {
-      active_labels = week_labels;
-    }
-    if (this.currentGraphMode === "Today") {
-      active_labels = today_labels;
-    }
-
-    this.lineChart.data.labels = active_labels;
-    this.lineChart.data.datasets[0].data = active_data;
-    this.lineChart.update();
-    return;
+    obj.lineChart.data.labels = active_labels;
+    obj.lineChart.data.datasets[0].data = active_data;
+    obj.lineChart.update();
   }
 
   drop(event: CdkDragDrop<GraphStatus[]>) {
@@ -211,10 +231,27 @@ export class VEMPageComponent implements OnInit {
     this.currentGraphMode = input;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
   /** Gets the total cost of all transactions. */
   getTotalCost() {
     return "";
+  }
+
+  getInOut(target_date,current_date ) {
+    this.dataService
+      .getVemInOutRange(current_date, target_date)
+      .subscribe(data => {
+        this.in_value = data.in;
+        this.out_value = data.out;
+        console.log(data);
+        this.transactions=[
+          { item: "In", cost: data.in },
+          { item: "Out", cost: data.out },
+          { item: "Total", cost: (data.out - data.in) }
+        ];
+      });
   }
 }

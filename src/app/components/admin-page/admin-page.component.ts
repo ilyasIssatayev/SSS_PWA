@@ -7,6 +7,8 @@ import { WebService } from "src/app/services/web.service";
 })
 export class AdminPageComponent implements OnInit {
 
+  csvOutput='Downloading CSV...';
+
   constructor(private dataService: WebService) { }
 
   ngOnInit() {
@@ -22,6 +24,13 @@ export class AdminPageComponent implements OnInit {
       .getTariff()
       .subscribe(data => {
         console.log("CSV: ",data)
+        let output: string="\n";
+        data.forEach(element => {
+          output+="   | Time: "+element.Time +" | Price_T1_I: "+element.Price_T1_I+" | Price_T2_I: "+element.Price_T2_I+" | rice_T1_E: "+element.Price_T1_E+" | Price_T2_E: "+element.Price_T2_E+" |";
+          output+='\n'
+        });
+        console.log(output)
+        this.csvOutput=output;
       });
   }
 

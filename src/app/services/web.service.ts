@@ -156,8 +156,9 @@ export class WebService {
     );
   }
   getVemBalance(date) {
+    console.log("T: ",this.getToken())
     return this.http.get<any>(
-      `${this.url}/vem/balance?start=${date.moth}-${date.day}-${date.year}`,
+      `${this.url}/vem/balance?start=${date.month}-${date.day}-${date.year}`,
       {
         headers: new HttpHeaders({
           "Content-Type": "application/json; charset=utf-8",
@@ -169,7 +170,7 @@ export class WebService {
   }
   getVemBalanceRange(start_date, end_date) {
     return this.http.get<any>(
-      `${this.url}/vem/balance?start=${start_date.moth}-${start_date.day}-${start_date.year}&end=${end_date.moth}-${end_date.day}-${end_date.year}`,
+      `${this.url}/vem/balance?start=${start_date.month}-${start_date.day}-${start_date.year}&end=${end_date.month}-${end_date.day}-${end_date.year}`,
       {
         headers: new HttpHeaders({
           "Content-Type": "application/json; charset=utf-8",
@@ -179,6 +180,20 @@ export class WebService {
       }
     );
   }
+
+  getVemInOutRange(start_date, end_date) {
+    return this.http.get<any>(
+      `${this.url}/vem/in-out?start=${start_date.month}-${start_date.day}-${start_date.year}&end=${end_date.month}-${end_date.day}-${end_date.year}`,
+      {
+        headers: new HttpHeaders({
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "none",
+          Authorization: `Bearer ${this.getToken()}`
+        })
+      }
+    );
+  }
+
   getTariff() {
     return this.http.get<any>(
       `${this.url}/admin/tariff`,

@@ -12,7 +12,7 @@
         class="example-box"
         cdkDrag
         *ngFor="let graphStatus of graphStatuses"
-        (click)='currentGraphMode = graphStatus.name; updateChart()'
+        (click)='currentGraphMode = graphStatus.name; getVEMBalance(updateChart)'
         >
         {{graphStatus.name}}
       </mat-chip>
