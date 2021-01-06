@@ -1,0 +1,10 @@
+<div class="profileSpace">
+  <mat-card class="user">
+      <p >Welcome</p>
+      <p >Name: {{user_name}}</p>
+      <p >Surname: {{user_surname}}</p>
+      <p >HouseNumber: {{user_houseNumber}}</p>
+  </mat-card>
+
+  <app-edit-user-info class="edit" [userDataActivator]="this"></app-edit-user-info>
+</div>

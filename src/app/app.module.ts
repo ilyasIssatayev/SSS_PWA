@@ -24,7 +24,7 @@ import {
 
 } from "@angular/material";
 
-
+import {MatListModule} from '@angular/material/list';
 import { ReactiveFormsModule } from "@angular/forms";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
@@ -41,7 +41,10 @@ import { EditUserInfoComponent } from './components/edit-user-info/edit-user-inf
 import { VEMPageComponent } from './components/vem-page/vem-page.component';
 import { EhpPageComponent } from './components/ehp-page/ehp-page.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
-
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { RankingListPageComponent } from './components/ranking-list-page/ranking-list-page.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,9 +59,15 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
     EditUserInfoComponent,
     VEMPageComponent,
     EhpPageComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    ProfilePageComponent,
+    RankingListPageComponent,
+
   ],
   imports: [
+
+    ScrollingModule,
+    MatListModule,
     MatNativeDateModule,
     MatDatepickerModule,
     MatTableModule,

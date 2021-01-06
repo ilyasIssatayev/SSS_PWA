@@ -11,6 +11,12 @@ export class EhpPageComponent implements OnInit {
   @ViewChild("lineCanvas", { static: false }) lineCanvas;
   lineChart: any;
 
+  start_date = false;
+  end_date = false;
+
+  sd;
+  ed;
+
   constructor() {}
 
   ngOnInit() {}
@@ -23,14 +29,28 @@ export class EhpPageComponent implements OnInit {
     console.log(`${typeof event.value}: ${event.value}`);
     let d: Date;
     d = event.value;
-    console.log("Date: ",d);
+    console.log("Date: ", d);
+    this.start_date = true;
+    this.sd = d;
+
+    if (this.end_date && this.start_date) {
+      console.log("Start");
+      this.updateChart(this);
+    }
   }
 
   enterDateEnd(type: string, event: MatDatepickerInputEvent<Date>) {
     console.log(`${typeof event.value}: ${event.value}`);
     let d: Date;
     d = event.value;
-    console.log("Date: ",d);
+    console.log("Date: ", d);
+    this.end_date = true;
+    this.ed = d;
+
+    if (this.end_date && this.start_date) {
+      console.log("End");
+      this.updateChart(this);
+    }
   }
 
   lineChartMethod() {
@@ -104,5 +124,43 @@ export class EhpPageComponent implements OnInit {
         ]
       }
     });
+  }
+
+  updateChart(obj) {
+    if (obj.sd > obj.ed) {
+      return;
+    }
+
+    let dates = [];
+    let active_date = obj.sd;
+
+    while (active_date < obj.ed) {
+      active_date.setDate(active_date.getDate() + 1);
+      dates.push(new Date(active_date));
+    }
+
+    //labels and datasets
+    let active_data = [];
+    let active_data2 = [];
+    let active_labels = [];
+
+    dates.forEach(element => {
+      let date = new Date(element);
+
+      //pushing data
+      active_labels.push(date.getDate() + " / " + date.getMonth() + 1);
+      active_data.push(this.getRandomInt(60));
+      active_data2.push(this.getRandomInt(50));
+    });
+
+    //Setting object to the chart
+    obj.lineChart.data.labels = active_labels;
+    obj.lineChart.data.datasets[0].data = active_data;
+    obj.lineChart.data.datasets[1].data = active_data2;
+    obj.lineChart.update();
+  }
+
+  getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
   }
 }

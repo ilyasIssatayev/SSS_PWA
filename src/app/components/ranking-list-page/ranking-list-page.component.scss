@@ -1,0 +1,59 @@
+.ranking-space {
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-rows: 0fr 0.4fr 0.5fr 8fr 1fr 2fr 3fr;
+  grid-template-areas:
+    ". . ."
+    ". title ."
+    ". . ."
+    ". list ."
+    ". . ."
+    ". user-rank ."
+    ". . .";
+}
+
+.list-port{
+overflow: auto;
+height: 40vh;
+}
+
+.title {
+  grid-area: title;
+  justify-self: center;
+  align-self: center;
+}
+.list {
+  grid-area: list;
+}
+.user-rank {
+  grid-area: user-rank;
+  width: 70%;
+  justify-self: center;
+
+  display: grid;
+  grid-template-columns: 0fr 2fr 0.2fr 2fr 0fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "text text text text text" ". name . ranking ." ;
+}
+
+.name {
+  grid-area: name;
+  justify-self: center;
+  align-self: center;
+}
+.ranking {
+  grid-area: ranking;
+}
+
+.fp-tableCell {
+  vertical-align: top !important;
+}
+
+.text {
+  font-size: 4vw;
+  grid-area: text;
+  justify-self: start;
+  align-self: center;
+}

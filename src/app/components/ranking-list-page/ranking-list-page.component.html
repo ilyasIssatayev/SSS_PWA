@@ -1,0 +1,15 @@
+<div class="ranking-space">
+  <div class="title">Ranking List</div>
+  <mat-card class="user-rank">
+    <div class="text">Personal Ranking:</div>
+    <div class="name">{{ user_name }}</div>
+    <div class="ranking">{{ user_rankingpoints }}</div>
+  </mat-card>
+  <mat-card class="list">
+    <mat-selection-list class="list-port">
+      <mat-list-item *ngFor="let user of users; let i = index" (click)="onSelect(user)"
+        >{{i+1}}. {{ user }}
+      </mat-list-item>
+    </mat-selection-list>
+  </mat-card>
+</div>

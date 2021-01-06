@@ -17,31 +17,21 @@
       <div class="slide" style="background-color: lightblue">
         <app-vem-page></app-vem-page>
       </div>
-      <!--Prediction Page-->
-      <div class="slide" style="background-color: lightcoral">
-        <app-edit-user-info [userDataActivator]="this"></app-edit-user-info>
+      <div class="slide" style="background-color: lightblue;   vertical-align: top!important;">
+        <app-ranking-list-page></app-ranking-list-page>
       </div>
+
       <!--Ranking Page-->
     </div>
-   <!--Settings Section-->
+    <!--Settings Section-->
     <div class="section" fp-auto-height style="background-color: lightcoral">
       <app-settings></app-settings>
     </div>
     <div class="section" fp-auto-height style="background-color: lightcoral">
-      <p style="Margin-left:30vw;">Welcome</p>
-      <p style="Margin-left:30vw;">Name: {{ user_name }}</p>
-      <p style="Margin-left:30vw;">Surname: {{ user_surname }}</p>
-      <p style="Margin-left:30vw;">HouseNumber: {{ user_houseNumber }}</p>
-      <app-edit-user-info [userDataActivator]="this"></app-edit-user-info>
+      <app-profile-page></app-profile-page>
     </div>
   </div>
   <!--Navigation Menu-->
-  <app-main-navigation-menu
-    [fullpage_api]="getFullpageAPI()"
-    class="nm"
-  >
-
-</app-main-navigation-menu>
+  <app-main-navigation-menu [fullpage_api]="getFullpageAPI()" class="nm">
+  </app-main-navigation-menu>
 </div>
-
-

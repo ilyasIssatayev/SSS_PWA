@@ -1,7 +1,7 @@
 <mat-card class="menu_body" >
-    <button mat-raised-button class="button b1" color="primary" (click)="fullpage_api.moveTo('main', 3); settings_name='Settings'">Main</button>
-    <button mat-raised-button class="button b2" color="primary" (click)="fullpage_api.moveTo('main', 0); settings_name='Settings'">Energy</button>
-    <button mat-raised-button class="button b3" color="primary" (click)="fullpage_api.moveTo('main', 1); settings_name='Settings'">VEM</button>
-    <button mat-raised-button class="button b4" color="primary" (click)="onSettings()">{{settings_name}}</button>
+    <button mat-raised-button class="button b1" color="warn" (click)="fullpage_api.moveTo('main', 3); settings_name='Settings'; profile_name='Profile'">Main</button>
+    <button mat-raised-button class="button b2" color="warn" (click)="fullpage_api.moveTo('main', 0); settings_name='Settings'; profile_name='Profile'">Energy</button>
+    <button mat-raised-button class="button b3" color="warn" (click)="fullpage_api.moveTo('main', 1); settings_name='Settings'; profile_name='Profile'">VEM</button>
+    <button mat-raised-button class="button b4" color="warn" (click)="onSettings()">{{settings_name}}</button>
     <button mat-raised-button class="button b5" color="warn" (click)="onProfile()">{{profile_name}}</button>
 </mat-card>

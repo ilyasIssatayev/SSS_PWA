@@ -1,0 +1,21 @@
+.profileSpace {
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-rows: 1fr 2fr 0.1fr 8fr 2fr;
+  grid-template-areas:
+    ". . ."
+    ". user ."
+    ". . ."
+    ". edit ."
+    ". . .";
+}
+
+.user {
+  grid-area: user;
+}
+
+.edit {
+  grid-area: edit;
+}

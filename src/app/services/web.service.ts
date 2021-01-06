@@ -135,6 +135,14 @@ export class WebService {
     );
   }
 
+  getRankingList()
+  {
+    return this.http.get<any>(
+      this.url + "/user/ranklist",
+      this.httpOptionsToken
+    );
+  }
+
   getUserName(userData): Observable<any> {
     return this.http.get<any>(
       this.url + "/user/firstname",

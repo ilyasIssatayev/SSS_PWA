@@ -1,5 +1,4 @@
 .main-space {
-
   display: grid;
 
   grid-template-columns: 1fr;
@@ -19,7 +18,7 @@
 
   display: grid;
   grid-template-columns: 1fr 2fr 2fr 1fr;
-  grid-template-rows: 0.1fr 1fr 1fr 1fr 1fr 3fr;
+  grid-template-rows: 0.1fr 1fr 1fr 1fr 1fr 0fr;
   grid-template-areas:
     ". txt txt ."
     ". name name ."
