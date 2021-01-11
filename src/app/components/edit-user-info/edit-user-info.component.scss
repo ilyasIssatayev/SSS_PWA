@@ -1,3 +1,7 @@
+$primary: var(--primary-color);
+$secondary: var(--secondary-color);
+$arrow: var(--arrow-color);
+
 .main-space {
   display: grid;
 
@@ -14,7 +18,7 @@
   justify-self: center;
   align-self: center;
 
-  background-color: lightblue;
+  background-color: $primary;
 
   display: grid;
   grid-template-columns: 1fr 2fr 2fr 1fr;

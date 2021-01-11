@@ -1,3 +1,15 @@
+:root {
+  --primary-color: #b00;
+  --secondary-color: #00b;
+
+  --arrow-color: rgba(255, 255, 255, 0.377);
+  
+}
+
+$primary: var(--primary-color);
+$secondary: var(--secondary-color);
+$arrow: var(--arrow-color);
+
 .settings-space {
   height:100%;
   width: 100%;
@@ -14,15 +26,59 @@
 
 .settings-list {
 
-  display: block;
-  box-direction: vertical;
+  display: grid;
+
+  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-rows: 1fr 2fr 2fr 2fr 2fr 1fr 1fr;
+  grid-template-areas:
+  ".  t ."
+  ". s1 ."
+  ". s2 ."
+  ". s3 ."
+  ". s4 ."
+  ". s5 ."
+  ". log ."
+  ". . .";
+
 
   grid-area: sl;
   height:100%;
   width: 100%;
 
-  background-color: lightblue;
+  background-color: $primary;
 
   align-self: center;
   justify-self: center;
+}
+
+.title{
+font-size: 3rem;
+grid-area: t;
+align-self: center;
+justify-self: center;
+}
+
+.login{
+  grid-area:log;
+  width: 40%;
+  justify-self: center;
+  align-self: center;
+  background-color: $arrow;
+}
+
+.s1{
+  grid-area: s1;
+}
+
+.s2{
+  grid-area: s2;
+}
+.s3{
+  grid-area: s3;
+}
+.s4{
+  grid-area: s4;
+}
+.s5{
+  grid-area: s5;
 }

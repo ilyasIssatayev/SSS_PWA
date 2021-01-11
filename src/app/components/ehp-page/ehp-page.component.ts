@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import * as Chart from "chart.js";
 import { MatDatepickerInputEvent } from "@angular/material";
-
+import { WebService } from '../../services/web.service';
 @Component({
   selector: "app-ehp-page",
   templateUrl: "./ehp-page.component.html",
@@ -16,8 +16,10 @@ export class EhpPageComponent implements OnInit {
 
   sd;
   ed;
-
-  constructor() {}
+  consumption=[];
+  production=[];
+  labels=[];
+  constructor(private dataService: WebService) {}
 
   ngOnInit() {}
 
@@ -35,7 +37,7 @@ export class EhpPageComponent implements OnInit {
 
     if (this.end_date && this.start_date) {
       console.log("Start");
-      this.updateChart(this);
+      //this.updateChart(this);
     }
   }
 
@@ -49,7 +51,7 @@ export class EhpPageComponent implements OnInit {
 
     if (this.end_date && this.start_date) {
       console.log("End");
-      this.updateChart(this);
+      //this.updateChart(this);
     }
   }
 
@@ -127,12 +129,13 @@ export class EhpPageComponent implements OnInit {
   }
 
   updateChart(obj) {
+    
     if (obj.sd > obj.ed) {
       return;
     }
 
     let dates = [];
-    let active_date = obj.sd;
+    let active_date = new Date(obj.sd);
 
     while (active_date < obj.ed) {
       active_date.setDate(active_date.getDate() + 1);
@@ -154,13 +157,39 @@ export class EhpPageComponent implements OnInit {
     });
 
     //Setting object to the chart
-    obj.lineChart.data.labels = active_labels;
-    obj.lineChart.data.datasets[0].data = active_data;
-    obj.lineChart.data.datasets[1].data = active_data2;
+    obj.lineChart.data.labels = this.labels;
+    obj.lineChart.data.datasets[0].data = this.production;
+    obj.lineChart.data.datasets[1].data = this.consumption;
     obj.lineChart.update();
   }
 
   getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  downloadEnergyData()
+  {
+    console.log("downloading ehp data...",this.sd);
+    console.log("END date",this.ed);
+    this.dataService.getEnergyProfileHistory(
+      {month:this.sd.getMonth()+1,day: this.sd.getDate(), year:this.sd.getFullYear()},
+      {month:this.ed.getMonth()+1,day: this.ed.getDate(), year:this.ed.getFullYear()}).subscribe(data => {
+      console.log("EHP:",data);
+      this.labels=[];
+      this.production=[];
+      this.consumption=[];
+      for (const [key, value] of Object.entries(data)) {
+        //console.log(`${key}: ${value}`);
+        //console.log(value);
+        let temp:any=value;
+        let productionToAdd= temp.productiont1+temp.productiont2;
+        let consumptionToAdd= temp.consumptiont1+temp.consumptiont2;
+        this.labels.push(key);
+        this.production.push(productionToAdd);
+        this.consumption.push(consumptionToAdd);
+      }
+      this.updateChart(this);
+       
+    });
   }
 }

@@ -1,3 +1,7 @@
+$primary: var(--primary-color);
+$secondary: var(--secondary-color);
+$arrow: var(--arrow-color);
+
 .main-space {
   height: 100vh;
   display: grid;
@@ -23,9 +27,10 @@
   justify-self: center;
   align-self: center;
 
-  background-color: lightblue;
+  background-color: $secondary;
 
   display: grid;
+  grid-column-gap: 10px;
   grid-template-columns: 1fr 2fr 2fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-areas:
@@ -38,14 +43,14 @@
 .register {
   grid-area: register;
 
-  justify-self: start;
+  justify-self: end;
   align-self: center;
 }
 
 .login {
   grid-area: login;
 
-  justify-self: end;
+  justify-self: start;
   align-self: center;
 }
 

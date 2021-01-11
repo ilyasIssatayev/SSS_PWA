@@ -12,6 +12,9 @@
    " . b1 . b2 . b3 . b4 . b5 ."
 }
 
+$primary: var(--primary-color);
+$secondary: var(--secondary-color);
+
 .button{
     justify-self: center;
     align-self: center;
@@ -19,21 +22,22 @@
     height: 100%;
     width: 100%;
     padding: 0 2px !important;
+    background-color: $primary;
 }
 
 .b1{
     grid-area: b1;
-    background-color: lightcoral;
+
 }
 
 .b2{
     grid-area: b2;
-    background-color: lightcoral;
+
 }
 
 .b3{
     grid-area: b3;
-    background-color: lightcoral;
+    
 }
 
 .b4{

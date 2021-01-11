@@ -47,8 +47,8 @@ export class RegisterPageComponent implements OnInit {
       anchors: [],
       menu: "#menu",
       paddingTop: 10,
-      controlArrows: true,
-      dragAndMove: true,
+      controlArrows: false,
+      dragAndMove: false,
       scrollingSpeed: 500,
 
       // fullpage callbacks

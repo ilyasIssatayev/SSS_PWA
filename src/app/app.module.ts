@@ -23,7 +23,8 @@ import {
 
 
 } from "@angular/material";
-
+import { FormsModule } from '@angular/forms';
+import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import { ReactiveFormsModule } from "@angular/forms";
 import { ServiceWorkerModule } from "@angular/service-worker";
@@ -65,7 +66,8 @@ import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 
   ],
   imports: [
-
+    FormsModule,
+    MatDividerModule,
     ScrollingModule,
     MatListModule,
     MatNativeDateModule,

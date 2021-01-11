@@ -39,11 +39,14 @@
   height: 100%;
   padding: 0!important;
   grid-template-columns: 1fr 3fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 0.3fr;
   grid-template-areas:
-    " . dt . ."
+    " . dt dt ."
+    " . dend dps ."
     " . dstart dpe ."
-    " . dend dps .";
+    " . update update ."
+    " . . . ."
+;
 }
 
 .date_end {
@@ -68,6 +71,12 @@
 }
 .date_text{
   grid-area: dt;
+  align-self: center;
+  justify-self: center;
+}
+
+.update{
+  grid-area: update;
   align-self: center;
   justify-self: center;
 }

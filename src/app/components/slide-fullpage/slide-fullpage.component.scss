@@ -1,3 +1,6 @@
+$primary: var(--primary-color);
+$secondary: var(--secondary-color);
+
 .mainArea {
   display: grid;
 
@@ -17,4 +20,11 @@
 .nm {
   grid-area: nm;
   height: 10vh;
+}
+
+.colorSecondary{
+  background-color: $secondary;
+}
+.colorPrimary{
+  background-color: $primary;
 }

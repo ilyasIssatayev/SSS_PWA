@@ -16,7 +16,7 @@
       </mat-form-field>
       <div class="date_picker_start">
           <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-          <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+          <mat-datepicker color="primary" #dp3 disabled="false"></mat-datepicker>
       </div>
 
       <mat-form-field class='date_start'>
@@ -30,10 +30,10 @@
         />
       </mat-form-field>
       <div class="date_picker_end">
-          <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
-          <mat-datepicker #dp2 disabled="false"></mat-datepicker>
+          <mat-datepicker-toggle matSuffix color="primary"[for]="dp2"></mat-datepicker-toggle>
+          <mat-datepicker #dp2 color="primary" disabled="false"></mat-datepicker>
       </div>
-
+      <button mat-stroked-button (click)="downloadEnergyData()" class="update">Update</button>
     </mat-card>
   </div>
 </div>

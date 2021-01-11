@@ -1,15 +1,17 @@
 <div class="ranking-space">
   <div class="title">Ranking List</div>
   <mat-card class="user-rank">
-    <div class="text">Personal Ranking:</div>
-    <div class="name">{{ user_name }}</div>
-    <div class="ranking">{{ user_rankingpoints }}</div>
+    <div class="text">Ranking of {{ user_name }}</div>
+    <div class="name">Rank: {{user_index}}</div>
+    <div class="ranking">Points: {{ user_rankingpoints }}</div>
   </mat-card>
   <mat-card class="list">
+    <div class="list-title">User Ranking:</div>
+    <mat-divider style="height: 3px;"></mat-divider>
     <mat-selection-list class="list-port">
-      <mat-list-item *ngFor="let user of users; let i = index" (click)="onSelect(user)"
-        >{{i+1}}. {{ user }}
-      </mat-list-item>
+      <mat-list-item *ngFor="let user of users; let i = index" (click)="onSelect(user)" 
+        ><div class="rank-slot"><div class="left-part" >{{i+1}}. {{ user }} </div>  <div class="right-part" >{{rankings[i]}} points</div>
+      </div></mat-list-item>
     </mat-selection-list>
   </mat-card>
 </div>

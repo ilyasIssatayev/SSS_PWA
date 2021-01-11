@@ -26,6 +26,7 @@ height: 40vh;
 }
 .list {
   grid-area: list;
+
 }
 .user-rank {
   grid-area: user-rank;
@@ -45,8 +46,9 @@ height: 40vh;
 }
 .ranking {
   grid-area: ranking;
+  justify-self: center;
+  align-self: center;
 }
-
 .fp-tableCell {
   vertical-align: top !important;
 }
@@ -57,3 +59,27 @@ height: 40vh;
   justify-self: start;
   align-self: center;
 }
+
+.list-title{
+  grid-area: lt;
+  font-size: 2rem;
+}
+
+.rank-slot{
+  width:100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: " left right ";
+}
+
+.left-part{
+  grid-area: left;
+  justify-self: start;
+}
+
+.right-part{
+  grid-area: right;
+  justify-self: end;;
+}
+

@@ -10,6 +10,7 @@ export class RankingListPageComponent implements OnInit {
   rankings: any = [];
   user_name;
   user_rankingpoints;
+  user_index;
   constructor(private dataService: WebService) {}
 
   usernameIsRequested = false;
@@ -50,6 +51,7 @@ export class RankingListPageComponent implements OnInit {
     if (this.rankingIsRequested === false) { return; }
 
     this.user_rankingpoints = this.rankings[this.users.indexOf(this.user_name)];
+    this.user_index= this.users.indexOf(this.user_name);
     console.log("name", this.user_name);
     console.log("Users",this.users)
     console.log("index:", this.users.indexOf(this.user_name));
