@@ -4,6 +4,19 @@ $secondary: var(--secondary-color);
 .button{
     float: right;
     background-color: $primary;
-    margin-right: 10px;
+    margin-right: 8px;
+    height: 40px;
+    width: 40px;
 
+}
+
+.icon{
+   margin-bottom: 4px;
+}
+.mat-fab{
+    
+}
+
+::ng-deep .mat-fab .mat-button-wrapper{
+    padding: 2px 0!important;
 }

@@ -23,7 +23,7 @@ export class TopNavMenuComponent implements OnInit {
 
   }
   onProfile() {
-    this.fullpage_api.moveTo("profile", 0);
+    this.fullpage_api.moveTo("profile", 1);
 
   }
 

@@ -21,7 +21,7 @@ height: 40vh;
 
 .title {
   grid-area: title;
-  justify-self: center;
+  justify-self: start;
   align-self: center;
 }
 .list {
@@ -30,7 +30,7 @@ height: 40vh;
 }
 .user-rank {
   grid-area: user-rank;
-  width: 70%;
+  width: 80%;
   justify-self: center;
 
   display: grid;
@@ -54,7 +54,7 @@ height: 40vh;
 }
 
 .text {
-  font-size: 4vw;
+  font-size: 6vw;
   grid-area: text;
   justify-self: start;
   align-self: center;

@@ -1,15 +1,15 @@
 .profileSpace {
-  height: 100%;
+  height: 70vh;
 
   display: grid;
-  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-columns: 1fr 4fr 4fr 1fr;
   grid-template-rows: 1fr 2fr 0.1fr 8fr 2fr;
   grid-template-areas:
-    ". . ."
-    ". user ."
-    ". . ."
-    ". edit ."
-    ". . .";
+    ". . . ."
+    ". user user ."
+    ". . . ."
+    ". b1 b2 ."
+    ". . . .";
 }
 
 .user {
@@ -18,4 +18,19 @@
 
 .edit {
   grid-area: edit;
+  height: 50vh;
+}
+
+.b1{
+  align-self: center;
+  justify-self: center;
+  grid-area: b1;
+  //height: 5vh;
+}
+
+.b2{
+  align-self: center;
+  justify-self: center;
+  grid-area: b2;
+  //height: 5vh;
 }

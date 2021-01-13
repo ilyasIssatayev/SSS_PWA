@@ -5,9 +5,10 @@
   display: grid;
 
   grid-template-columns: 1fr minmax(0, 8fr) 1fr;
-  grid-template-rows: 0.5fr 5fr 1fr 2fr 0fr;
+  grid-template-rows: 0.5fr 1fr 10fr 0.5fr 2fr 1fr;
   grid-template-areas:
     " . ehp_txt . "
+    ". . ."
     " graph graph graph "
     " . conf . "
     " . table . "
@@ -17,7 +18,7 @@
 .ehp-text {
   grid-area: ehp_txt;
   align-self: center;
-  justify-self: center;
+  justify-self: start;
 }
 
 .graph {
@@ -36,7 +37,7 @@
   display: grid;
 
   width: 100%;
-  height: 100%;
+  height: 90%;
   padding: 0!important;
   grid-template-columns: 1fr 3fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 0.3fr;

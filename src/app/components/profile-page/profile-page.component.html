@@ -5,6 +5,8 @@
       <p >Surname: {{user_surname}}</p>
       <p >HouseNumber: {{user_houseNumber}}</p>
   </mat-card>
-
-  <app-edit-user-info class="edit" [userDataActivator]="this"></app-edit-user-info>
+  <button mat-raised-button class="b1" (click)="goToEditPassword()">Edit Password</button>
+  <button mat-raised-button class="b2" (click)="goToEditInfo()"> Edit Info</button>
+  
+  <!--app-edit-user-info class="edit" [userDataActivator]="this"></app-edit-user-info --!-->
 </div>

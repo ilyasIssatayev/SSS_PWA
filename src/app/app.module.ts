@@ -47,6 +47,7 @@ import { RankingListPageComponent } from './components/ranking-list-page/ranking
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 import { TopNavMenuComponent } from './components/top-nav-menu/top-nav-menu.component';
+import { UserChangePasswordComponent } from './components/user-change-password/user-change-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +66,7 @@ import { TopNavMenuComponent } from './components/top-nav-menu/top-nav-menu.comp
     ProfilePageComponent,
     RankingListPageComponent,
     TopNavMenuComponent,
+    UserChangePasswordComponent,
 
   ],
   imports: [

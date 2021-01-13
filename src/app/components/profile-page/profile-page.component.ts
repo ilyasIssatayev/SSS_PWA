@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { WebService } from "../../services/web.service";
 
 @Component({
@@ -8,6 +8,9 @@ import { WebService } from "../../services/web.service";
 })
 export class ProfilePageComponent implements OnInit {
 
+  @Input()
+  fullpage_api;
+
   user_name
   user_surname
   user_houseNumber
@@ -16,6 +19,17 @@ export class ProfilePageComponent implements OnInit {
 
   ngOnInit() {
     this.updateUserData();
+  }
+
+  goToEditInfo()
+  {
+    console.log("Edit INfo")
+    this.fullpage_api.moveSlideRight();
+  }
+
+  goToEditPassword()
+  {
+    this.fullpage_api.moveSlideLeft();
   }
 
   updateUserData() {
