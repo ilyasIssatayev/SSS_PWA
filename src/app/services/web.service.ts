@@ -49,6 +49,21 @@ export class WebService {
     console.log(`Token set to ${this.token}`);
   }
 
+  postPassword(passwordData): Observable<any>{
+    let bodyToSend;
+
+    bodyToSend = {
+      oldpassword: passwordData.old_password,
+      password: passwordData.new_password
+    };
+    console.log("Post: Password change", bodyToSend);
+    return this.http.put<any>(
+      this.url + "/user/password",
+      bodyToSend,
+      this.httpOptionsToken
+    );
+  }
+
   postRegister(registerData): Observable<any> {
     let bodyToSend;
 

@@ -9,8 +9,8 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   styleUrls: ['./user-change-password.component.scss']
 })
 export class UserChangePasswordComponent implements OnInit {
-  hide=true;
-  
+  hide = true;
+
   email = new FormControl("", [Validators.required, Validators.email]);
 
   old_password;
@@ -23,24 +23,29 @@ export class UserChangePasswordComponent implements OnInit {
 
     return this.email.hasError("email") ? "Not a valid email" : "";
   }
-  constructor() { }
+  constructor(private dataService: WebService,
+    private router: Router,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
-  updateNewPassword(event){
+  updateNewPassword(event) {
     this.new_password = event.target.value;
   }
 
-  updateOldPassword(event){
+  updateOldPassword(event) {
     this.old_password = event.target.value;
   }
 
-  OnCancel(){
+  onCancel() {
 
   }
 
-  OnChange()
-  {
+  onChange() {
+    this.dataService.postPassword({old_password: this.old_password,new_password: this.new_password}).subscribe(
+      data=>{
+        console.log("OUTPUT: ",data);
     
+    })
   }
 }
