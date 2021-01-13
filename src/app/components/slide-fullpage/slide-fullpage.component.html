@@ -1,4 +1,6 @@
 <!-- app.component.html -->
+
+
 <div class="mainArea">
   <div
     fullpage
@@ -30,6 +32,7 @@
       <app-profile-page></app-profile-page>
     </div>
   </div>
+  <app-top-nav-menu [fullpage_api]="getFullpageAPI()" style="position: fixed; height: 10vh; width: 100vw; z-index: 999;"></app-top-nav-menu>
   <!--Navigation Menu-->
   <app-main-navigation-menu [fullpage_api]="getFullpageAPI()" class="nm">
   </app-main-navigation-menu>

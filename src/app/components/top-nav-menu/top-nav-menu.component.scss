@@ -1,0 +1,9 @@
+$primary: var(--primary-color);
+$secondary: var(--secondary-color);
+
+.button{
+    float: right;
+    background-color: $primary;
+    margin-right: 10px;
+
+}

@@ -25,7 +25,7 @@ $arrow: var(--arrow-color);
 }
 
 .settings-list {
-
+  height: 70vh;
   display: grid;
 
   grid-template-columns: 1fr 8fr 1fr;
@@ -42,7 +42,7 @@ $arrow: var(--arrow-color);
 
 
   grid-area: sl;
-  height:100%;
+
   width: 100%;
 
   background-color: $primary;

@@ -46,6 +46,7 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 import { RankingListPageComponent } from './components/ranking-list-page/ranking-list-page.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
+import { TopNavMenuComponent } from './components/top-nav-menu/top-nav-menu.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +64,7 @@ import { ScrollDispatchModule } from '@angular/cdk/scrolling';
     AdminPageComponent,
     ProfilePageComponent,
     RankingListPageComponent,
+    TopNavMenuComponent,
 
   ],
   imports: [

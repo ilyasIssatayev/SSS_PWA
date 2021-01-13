@@ -7,9 +7,9 @@
 
 
   grid-template-rows: 1fr;
-  grid-template-columns: 0.5fr 5fr 1fr 5fr 1fr 5 1fr 5fr 0.5fr 3fr 0.5fr;
+  grid-template-columns: 0.5fr 5fr 1fr 5fr 1fr 5  0.5fr;
   grid-template-areas:
-   " . b1 . b2 . b3 . b4 . b5 ."
+   " . b1 . b2 . b3 ."
 }
 
 $primary: var(--primary-color);
@@ -46,3 +46,4 @@ $secondary: var(--secondary-color);
 .b5{
   grid-area: b5;
 }
+
