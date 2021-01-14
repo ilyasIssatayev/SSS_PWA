@@ -50,7 +50,6 @@ export class VEMPageComponent implements OnInit {
   }
 
   getVEMBalance(callback) {
-    console.log("getVEMBalance");
     let output_data = [];
     let output_labels = [];
     let date = new Date();
@@ -80,8 +79,6 @@ export class VEMPageComponent implements OnInit {
       day: t_date.getDate()
     };
 
-    console.log("Current date: ", current_date);
-    console.log("Target date: ", target_date);
     this.getInOut(current_date, target_date);
     if (day_range !== 1) {
       this.dataService
@@ -95,12 +92,10 @@ export class VEMPageComponent implements OnInit {
             output_labels.push(balance.day);
 
           });
-          console.log("Callback");
           callback(output_data, output_labels, this);
         });
     }
     if (day_range === 1) {
-      console.log("Range 1");
       this.dataService
         .getVemBalance(
           current_date //End Date
@@ -110,16 +105,12 @@ export class VEMPageComponent implements OnInit {
             output_data.push(balance.Balance);
             output_labels.push(balance.time);
           });
-          console.log("Callback");
           callback(output_data, output_labels, this);
         });
     }
   }
 
   lineChartMethod(active_data, a_labels, obj) {
-    console.log("Line Chart ", obj.currentGraphMode);
-    console.log("Data", active_data);
-
     let month_labels = [
       "January",
       "February",
@@ -246,7 +237,6 @@ export class VEMPageComponent implements OnInit {
       .subscribe(data => {
         this.in_value = data.in;
         this.out_value = data.out;
-        console.log(data);
         this.transactions=[
           { item: "In", cost: data.in },
           { item: "Out", cost: data.out },
