@@ -16,43 +16,33 @@ export class EhpPageComponent implements OnInit {
 
   sd;
   ed;
-  consumption=[];
-  production=[];
-  labels=[];
-  constructor(private dataService: WebService) {}
 
-  ngOnInit() {}
+  consumption = [];
+  production = [];
+  labels = [];
+
+  constructor(private dataService: WebService) { }
+
+  ngOnInit() { }
+
 
   ngAfterViewInit() {
+    //Initiate the graph
     this.lineChartMethod();
+    //update chart based on Backend's data
+    this.updateChart(this);
   }
 
   enterDateStart(type: string, event: MatDatepickerInputEvent<Date>) {
-    console.log(`${typeof event.value}: ${event.value}`);
     let d: Date;
     d = event.value;
-    console.log("Date: ", d);
-    this.start_date = true;
     this.sd = d;
-
-    if (this.end_date && this.start_date) {
-      console.log("Start");
-      //this.updateChart(this);
-    }
   }
 
   enterDateEnd(type: string, event: MatDatepickerInputEvent<Date>) {
-    console.log(`${typeof event.value}: ${event.value}`);
     let d: Date;
     d = event.value;
-    console.log("Date: ", d);
-    this.end_date = true;
     this.ed = d;
-
-    if (this.end_date && this.start_date) {
-      console.log("End");
-      //this.updateChart(this);
-    }
   }
 
   lineChartMethod() {
@@ -129,7 +119,7 @@ export class EhpPageComponent implements OnInit {
   }
 
   updateChart(obj) {
-    
+
     if (obj.sd > obj.ed) {
       return;
     }
@@ -167,29 +157,28 @@ export class EhpPageComponent implements OnInit {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
-  downloadEnergyData()
-  {
-    console.log("downloading ehp data...",this.sd);
-    console.log("END date",this.ed);
+  downloadEnergyData() {
+    console.log("downloading ehp data...", this.sd);
+    console.log("END date", this.ed);
     this.dataService.getEnergyProfileHistory(
-      {month:this.sd.getMonth()+1,day: this.sd.getDate(), year:this.sd.getFullYear()},
-      {month:this.ed.getMonth()+1,day: this.ed.getDate(), year:this.ed.getFullYear()}).subscribe(data => {
-      console.log("EHP:",data);
-      this.labels=[];
-      this.production=[];
-      this.consumption=[];
-      for (const [key, value] of Object.entries(data)) {
-        //console.log(`${key}: ${value}`);
-        //console.log(value);
-        let temp:any=value;
-        let productionToAdd= temp.productiont1+temp.productiont2;
-        let consumptionToAdd= temp.consumptiont1+temp.consumptiont2;
-        this.labels.push(key);
-        this.production.push(productionToAdd);
-        this.consumption.push(consumptionToAdd);
-      }
-      this.updateChart(this);
-       
-    });
+      { month: this.sd.getMonth() + 1, day: this.sd.getDate(), year: this.sd.getFullYear() },
+      { month: this.ed.getMonth() + 1, day: this.ed.getDate(), year: this.ed.getFullYear() }).subscribe(data => {
+        console.log("EHP:", data);
+        this.labels = [];
+        this.production = [];
+        this.consumption = [];
+        for (const [key, value] of Object.entries(data)) {
+          //console.log(`${key}: ${value}`);
+          //console.log(value);
+          let temp: any = value;
+          let productionToAdd = temp.productiont1 + temp.productiont2;
+          let consumptionToAdd = temp.consumptiont1 + temp.consumptiont2;
+          this.labels.push(key);
+          this.production.push(productionToAdd);
+          this.consumption.push(consumptionToAdd);
+        }
+        this.updateChart(this);
+
+      });
   }
 }

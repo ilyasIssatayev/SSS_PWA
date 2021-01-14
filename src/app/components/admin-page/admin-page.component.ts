@@ -11,6 +11,7 @@ export class AdminPageComponent implements OnInit {
 
   constructor(private dataService: WebService) { }
 
+  //Downloads CSV file from Backend when page is loaded
   ngOnInit() {
     this.DownloadCSV();
   }
@@ -19,18 +20,20 @@ export class AdminPageComponent implements OnInit {
 
   }
 
+  //Downloads CSV from backend
   DownloadCSV(){
     this.dataService
       .getTariff()
       .subscribe(data => {
-        console.log("CSV: ",data)
+
         let output: string="\n";
         data.forEach(element => {
           output+="   | Time: "+element.Time +" | Price_T1_I: "+element.Price_T1_I+" | Price_T2_I: "+element.Price_T2_I+" | rice_T1_E: "+element.Price_T1_E+" | Price_T2_E: "+element.Price_T2_E+" |";
           output+='\n'
         });
-        console.log(output)
+
         this.csvOutput=output;
+
       });
   }
 

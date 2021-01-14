@@ -7,17 +7,25 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class WebService {
+  //The main url of the backend
+  //If you change this url, all request wil be directed to new url
   url = "https://sedcon-backend.herokuapp.com";
+
+  //The main token of the user, that will be used as authorization key in majoroty requests
   token;
+
+  //Class constructor, here http library isimported in use as 'http' variable
   constructor(private http: HttpClient) {}
 
-  // Http Options
+  // Http Options wihtout TOKEN
+  //this options states that request has json object
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json"
     })
   };
-
+ // Http Options with TOKEN
+ // this options states that requests has TOKEN as authorization, and has JSON object
   httpOptionsToken = {
     headers: new HttpHeaders({
       "Content-Type": "application/json; charset=utf-8",
@@ -26,6 +34,7 @@ export class WebService {
     })
   };
 
+  //Gets token from local storage
   getToken() {
     let output = localStorage.getItem("local_token");
 
@@ -35,7 +44,8 @@ export class WebService {
     //console.log("GET TOKEN: ", output);
     return output;
   }
-
+  
+  //Saves token into local storage and also updates http options due to new token
   setToken(newToken) {
     localStorage.setItem("local_token", newToken);
 
@@ -49,6 +59,7 @@ export class WebService {
     console.log(`Token set to ${this.token}`);
   }
 
+  //Sends Request to change new password
   postPassword(passwordData): Observable<any>{
     let bodyToSend;
 
@@ -64,6 +75,7 @@ export class WebService {
     );
   }
 
+  //Sends Request to set VEM_ACTIVE true or false
   putVemActive(vemActive): Observable<any>{
     let bodyToSend;
 
@@ -78,6 +90,7 @@ export class WebService {
     );
   }
 
+  //Sends Request to get value of VEM_ACTIVE  
   getVemActive(): Observable<any>{
     return this.http.get<any>(
       this.url + "/user/vem-active",
@@ -85,6 +98,7 @@ export class WebService {
     );
   }
 
+  //Sends Request to register new user
   postRegister(registerData): Observable<any> {
     let bodyToSend;
 
@@ -100,6 +114,7 @@ export class WebService {
     );
   }
 
+  //Sends Request to login user
   postLogin(loginData): Observable<any> {
     //console.log("postLogin: ",loginData);
 
@@ -117,6 +132,7 @@ export class WebService {
     );
   }
 
+  //Sends Request to change User's name
   putName(userData): Observable<any> {
     console.log("HTTP_OPTIONS: ", this.httpOptionsToken.headers);
 
@@ -132,6 +148,7 @@ export class WebService {
     );
   }
 
+  //Sends Request to change User's surname
   putSurname(userData): Observable<any> {
     let bodyToSend;
 
@@ -145,6 +162,7 @@ export class WebService {
     );
   }
 
+  //Sends Request to sets CSV tariff
   putCSVTariff(userData): Observable<any> {
     let bodyToSend;
 
@@ -158,6 +176,7 @@ export class WebService {
     );
   }
 
+  //Sends Request to change User's house number
   postHouseNumber(userData): Observable<any> {
     let bodyToSend;
 
@@ -171,6 +190,7 @@ export class WebService {
     );
   }
 
+  //Sends Request to get Ranking List  
   getRankingList()
   {
     return this.http.get<any>(
@@ -179,6 +199,7 @@ export class WebService {
     );
   }
 
+  //Sends Request to get User's name  
   getUserName(userData): Observable<any> {
     return this.http.get<any>(
       this.url + "/user/firstname",
@@ -186,6 +207,7 @@ export class WebService {
     );
   }
 
+  //Sends Request to change User's surname
   getSurname(userData): Observable<any> {
     return this.http.get<any>(
       this.url + "/user/lastname",
@@ -193,14 +215,17 @@ export class WebService {
     );
   }
 
+  //Sends Request to change User's house number  
   getHouseNumber(): Observable<any> {
     return this.http.get<any>(
       this.url + "/user/house-number",
       this.httpOptionsToken
     );
   }
+
+  //Sends Request to get VEM Balance
   getVemBalance(date) {
-    console.log("T: ",this.getToken())
+
     return this.http.get<any>(
       `${this.url}/vem/balance?start=${date.month}-${date.day}-${date.year}`,
       {
@@ -213,6 +238,7 @@ export class WebService {
     );
   }
 
+    //Sends Request to get energy history profile data between chosen dates
   getEnergyProfileHistory(start_date, end_date){
     return this.http.get<any>(
       `${this.url}/energy-history?start=${start_date.month}-${start_date.day}-${start_date.year}&end=${end_date.month}-${end_date.day}-${end_date.year}`,
@@ -226,8 +252,40 @@ export class WebService {
     );
   }
 
-  getVemBalanceRange(start_date, end_date) {
+  getColorBlindMode(){
+    return this.http.get<any>(
+      `${this.url}/user/cb-active`,
+      {
+        headers: new HttpHeaders({
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "none",
+          Authorization: `Bearer ${this.getToken()}`
+        })
+      }
+    );
+  }
+  putColorBlindMode(userData){
+    let bodyToSend;
+
+    bodyToSend = {
+      cb_active: userData.cb_active
+    };
     
+    return this.http.put<any>(
+      `${this.url}/user/cb-active`,
+      bodyToSend,
+      {
+        headers: new HttpHeaders({
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "none",
+          Authorization: `Bearer ${this.getToken()}`
+        })
+      }
+    );
+  }
+
+  //Sends Request to get VEM Balance between chosen dates
+  getVemBalanceRange(start_date, end_date) {
     return this.http.get<any>(
       `${this.url}/vem/balance?start=${start_date.month}-${start_date.day}-${start_date.year}&end=${end_date.month}-${end_date.day}-${end_date.year}`,
       {
@@ -240,6 +298,7 @@ export class WebService {
     );
   }
 
+    //Sends Request to get user's In and Out values between given dates
   getVemInOutRange(start_date, end_date) {
     return this.http.get<any>(
       `${this.url}/vem/in-out?start=${start_date.month}-${start_date.day}-${start_date.year}&end=${end_date.month}-${end_date.day}-${end_date.year}`,
@@ -253,6 +312,7 @@ export class WebService {
     );
   }
 
+  //Sends Rquest to get tariff (admin's functionality)
   getTariff() {
     return this.http.get<any>(
       `${this.url}/admin/tariff`,

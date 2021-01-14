@@ -39,6 +39,10 @@ export class SettingsComponent implements OnInit {
       this.vemActive=``+(vem_active.vem_active+1);
       console.log("VEM_ACTIVE: ",this.vemActive)
     })
+    this.dataService.getColorBlindMode().subscribe(cb_active => {
+      this.displayType=cb_active+1;
+      console.log(this.displayType);
+    })
 
   }
 

@@ -40,6 +40,7 @@ export class EditUseDataComponent implements OnInit {
     this.houseNumber = event.target.value;
   }
 
+  //Make sure to recieve only numbers from input
   numberOnly(event): boolean {
     const charCode = event.which ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
@@ -48,9 +49,12 @@ export class EditUseDataComponent implements OnInit {
     return true;
   }
 
+  //Navigate to main
   onCancel() {
     this.router.navigateByUrl("main");
   }
+
+  //Navigate to main with saveing UserData on Backend
   onApply() {
     this.router.navigateByUrl("main");
     this.sendUserData();
@@ -58,25 +62,10 @@ export class EditUseDataComponent implements OnInit {
 
   sendUserData() {
     //Updating User's first name
-    console.log("Sending USER DATA: ", this.name, " / ", this.surname);
-
-    this.dataService.putName({ name: this.name }).subscribe(
-      data => {
-        console.log(data);
-        console.log("<+++++++++++>");
-      },
-      error => {
-        console.log("Error: ", error);
-      }
-    );
+    this.dataService.putName({ name: this.name }).subscribe();
     //Updating User's last name
-    this.dataService.putSurname({ surname: this.surname }).subscribe(
-      data => {
-        console.log(data);
-      },
-      error => {
-        console.log("Error: ", error);
-      }
-    );
+    this.dataService.putSurname({ surname: this.surname }).subscribe();
+    //Updating User's HouseNumber
+    this.dataService.postHouseNumber({houseNumber: this.houseNumber}).subscribe();
   }
 }
