@@ -51,7 +51,8 @@ export class LoginPageComponent implements OnInit {
       .subscribe(
         token => {
           if (token != undefined && token != null) {
-            this.router.navigateByUrl("main");
+            if(this.account==="admin@admin") this.router.navigateByUrl("admin");
+            else this.router.navigateByUrl("main");
             this.dataService.setToken( token );
           } else {
             this._snackBar.open("Wrong Account or password", "OK", {
