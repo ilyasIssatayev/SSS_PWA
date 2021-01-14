@@ -56,10 +56,31 @@ export class WebService {
       oldpassword: passwordData.old_password,
       password: passwordData.new_password
     };
-    console.log("Post: Password change", bodyToSend);
+
     return this.http.put<any>(
       this.url + "/user/password",
       bodyToSend,
+      this.httpOptionsToken
+    );
+  }
+
+  putVemActive(vemActive): Observable<any>{
+    let bodyToSend;
+
+    bodyToSend = {
+      vem_active: vemActive
+    };
+
+    return this.http.put<any>(
+      this.url + "/user/vem-active",
+      bodyToSend,
+      this.httpOptionsToken
+    );
+  }
+
+  getVemActive(): Observable<any>{
+    return this.http.get<any>(
+      this.url + "/user/vem-active",
       this.httpOptionsToken
     );
   }

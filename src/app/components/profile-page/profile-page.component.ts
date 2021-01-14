@@ -14,7 +14,7 @@ export class ProfilePageComponent implements OnInit {
   user_name
   user_surname
   user_houseNumber
-
+  
   constructor(private dataService: WebService) { }
 
   ngOnInit() {

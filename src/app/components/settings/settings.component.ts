@@ -11,7 +11,7 @@ import { MatRadioChange } from '@angular/material';
 export class SettingsComponent implements OnInit {
 
   displayType;
-
+  vemActive;
   //Radio Buttons functionality
   selected: string;
   filter: any;
@@ -20,6 +20,7 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
     this.loadSettings();
+
     //this.changeTheme('lightcoral','lightblue','rgba(255, 255, 255, 0.377)');
   }
 
@@ -31,8 +32,14 @@ export class SettingsComponent implements OnInit {
   loadSettings()
   {
     this.displayType = localStorage.getItem("displayType");
-    if (this.displayType==='1') this.changeTheme('lightcoral','lightblue','rgba(255, 255, 255, 0.377)');
-    else this.changeTheme('darkgrey','white','black');
+     if (this.displayType==='2') this.changeTheme('darkgrey','white','black');
+     else this.changeTheme('lightcoral','lightblue','rgba(255, 255, 255, 0.377)');
+     console.log("DISPLAY: ",this.displayType)
+    this.dataService.getVemActive().subscribe(vem_active => {
+      this.vemActive=``+(vem_active.vem_active+1);
+      console.log("VEM_ACTIVE: ",this.vemActive)
+    })
+
   }
 
   onLogout(){
@@ -53,6 +60,17 @@ export class SettingsComponent implements OnInit {
     if (event.value==='1') this.changeTheme('lightcoral','lightblue','rgba(255, 255, 255, 0.377)');
     else this.changeTheme('darkgrey','white','black');
     this.saveSettings();
+}
+
+radioChangeVEM(event: MatRadioChange){
+  console.log(event.value);
+  this.vemActive=event.value;
+  let vem;
+  if(this.vemActive==='2') vem=true;
+  else vem=false;
+  this.dataService.putVemActive(vem).subscribe(data=>{
+
+  })
 }
 
 

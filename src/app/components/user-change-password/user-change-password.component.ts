@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators } from "@angular/forms";
 import { WebService } from "../../services/web.service";
 import { Router } from "@angular/router";
@@ -9,6 +9,9 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   styleUrls: ['./user-change-password.component.scss']
 })
 export class UserChangePasswordComponent implements OnInit {
+  @Input()
+  fullpage_api;
+
   hide = true;
 
   email = new FormControl("", [Validators.required, Validators.email]);
@@ -38,7 +41,7 @@ export class UserChangePasswordComponent implements OnInit {
   }
 
   onCancel() {
-
+    this.fullpage_api.moveSlideRight();
   }
 
   onChange() {

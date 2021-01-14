@@ -4,17 +4,17 @@
       Settings
     </div>
  
-    <mat-radio-group [(ngModel)]="selected" aria-label="Select an option" class="s1" style="float: left; width:100%; margin-bottom: 10px">
+    <mat-radio-group [(ngModel)]="displayType" aria-label="Select an option" class="s1" style="float: left; width:100%; margin-bottom: 10px">
       Display Type:
       <mat-radio-button value="1" (change)="radioChange($event)">Normal</mat-radio-button>
       <mat-radio-button value="2" (change)="radioChange($event)">Colorblind</mat-radio-button>
       
     </mat-radio-group>
 
-    <mat-radio-group aria-label="Select an option" class="s2" style="float: left; width:100%; margin-bottom: 10px">
+    <mat-radio-group  [(ngModel)]="vemActive" aria-label="Select an option" class="s2" style="float: left; width:100%; margin-bottom: 10px">
       Participate in VEM:
-      <mat-radio-button value="1"> Yes </mat-radio-button>
-      <mat-radio-button value="2"> No </mat-radio-button>
+      <mat-radio-button value="1" (change)="radioChangeVEM($event)"> No </mat-radio-button>
+      <mat-radio-button value="2" (change)="radioChangeVEM($event)"> Yes </mat-radio-button>
     </mat-radio-group>
     <mat-radio-group aria-label="Select an option" class="s3" style="float: left; width:100%; margin-bottom: 10px">
       Options A:

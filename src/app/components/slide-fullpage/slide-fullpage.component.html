@@ -29,7 +29,7 @@
       <app-settings></app-settings>
     </div>
     <div class="section colorSecondary" fp-auto-height >
-      <app-user-change-password class="slide "></app-user-change-password>
+      <app-user-change-password [fullpage_api]="getFullpageAPI()" class="slide "></app-user-change-password>
       <app-profile-page [fullpage_api]="getFullpageAPI()" class="slide "></app-profile-page>
       <app-edit-user-info class="slide " style="height: 60vh; width: 90vw;"></app-edit-user-info>
     </div>
