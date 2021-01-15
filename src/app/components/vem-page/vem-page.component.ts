@@ -198,10 +198,12 @@ export class VEMPageComponent implements OnInit {
         active_labels.push(date.getHours() + ":" + date.getMinutes());
       }
       if (obj.currentGraphMode === "Week") {
-        active_labels.push(date.getDate() + " / " + (date.getMonth()+1));
+        let month=(date.getMonth()+1);
+        active_labels.push(date.getDate() + " / " + month);
       }
       if (obj.currentGraphMode === "Month") {
-        active_labels.push(date.getDate() + " / " + date.getMonth());
+        let month=(date.getMonth()+1);
+        active_labels.push(date.getDate() + " / " + month);
       }
     });
 
