@@ -31,7 +31,7 @@ export class ProfilePageComponent implements OnInit {
 
   ngOnInit() {
     this.updateUserData();
-    this.dataService.updateProfile=this.updateUserData;
+    this.dataService.updateProfile=this;
   }
 
   goToEditInfo()
