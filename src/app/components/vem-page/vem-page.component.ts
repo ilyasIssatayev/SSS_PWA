@@ -65,8 +65,8 @@ export class VEMPageComponent implements OnInit {
     if (this.currentGraphMode === "Today") {
       day_range = 1;
     }
-    date.setDate(date.getDate() - 15);
-    t_date.setDate(t_date.getDate() - day_range- 15);
+    date.setDate(date.getDate());
+    t_date.setDate(t_date.getDate() - day_range);
 
     let current_date = {
       year: date.getFullYear(),
