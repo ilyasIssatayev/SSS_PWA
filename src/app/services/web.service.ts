@@ -17,6 +17,12 @@ export class WebService {
   //Class constructor, here http library isimported in use as 'http' variable
   constructor(private http: HttpClient) {}
 
+  //local cached variables
+  updateProfile;
+  user_name
+  user_surname
+  user_houseNumber
+
   // Http Options wihtout TOKEN
   //this options states that request has json object
   httpOptions = {

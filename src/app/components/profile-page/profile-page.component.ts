@@ -15,10 +15,23 @@ export class ProfilePageComponent implements OnInit {
   user_surname
   user_houseNumber
   
+  getName(){
+    return this.dataService.user_name;
+  }
+
+  getSurname(){
+    return this.dataService.user_surname;
+  }
+
+  getHouseNumber(){
+    return this.dataService.user_houseNumber;
+  }
+
   constructor(private dataService: WebService) { }
 
   ngOnInit() {
     this.updateUserData();
+    this.dataService.updateProfile=this.updateUserData;
   }
 
   goToEditInfo()
@@ -35,17 +48,17 @@ export class ProfilePageComponent implements OnInit {
   updateUserData() {
 
     this.dataService.getUserName({}).subscribe(data => {
-      this.user_name = data.firstname;
+      this.dataService.user_name = data.firstname;
     });
     this.dataService.getSurname({}).subscribe(
       data => {
-        this.user_surname = data.lastname;
+        this.dataService.user_surname = data.lastname;
       },
       error => {}
     );
     this.dataService.getHouseNumber().subscribe(
       data => {
-        this.user_houseNumber = data.house_number;
+        this.dataService.user_houseNumber = data.house_number;
       },
       error => {}
     );

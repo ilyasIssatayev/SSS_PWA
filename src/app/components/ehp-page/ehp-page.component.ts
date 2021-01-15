@@ -29,7 +29,7 @@ export class EhpPageComponent implements OnInit {
   ngAfterViewInit() {
     //Initiate the graph
     this.lineChartMethod();
-    //update chart based on Backend's data
+    //update chart based on Backends
     this.updateChart(this);
   }
 

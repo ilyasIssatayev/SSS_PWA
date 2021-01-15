@@ -1,9 +1,9 @@
 <div class="profileSpace">
   <mat-card class="user">
       <p >Welcome</p>
-      <p >Name: {{user_name}}</p>
-      <p >Surname: {{user_surname}}</p>
-      <p >HouseNumber: {{user_houseNumber}}</p>
+      <p >Name: {{getName()}}</p>
+      <p >Surname: {{getSurname()}}</p>
+      <p >HouseNumber: {{getHouseNumber()}}</p>
   </mat-card>
   <button mat-raised-button class="b1" (click)="goToEditPassword()">Edit Password</button>
   <button mat-raised-button class="b2" (click)="goToEditInfo()"> Edit Info</button>

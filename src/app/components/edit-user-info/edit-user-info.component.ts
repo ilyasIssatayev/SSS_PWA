@@ -52,7 +52,11 @@ export class EditUserInfoComponent implements OnInit {
 
   onSave() {
     this.sendUserData();
-    this.userDataActivator.updateUserData();
+   // this.userDataActivator.updateUserData();
+    this.dataService.user_name=this.name;
+    this.dataService.user_surname=this.surname;
+    this.dataService.user_houseNumber=this.houseNumber;
+    this.dataService.updateProfile();
   }
 
   sendUserData() {
