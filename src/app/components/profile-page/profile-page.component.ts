@@ -31,7 +31,7 @@ export class ProfilePageComponent implements OnInit {
 
   ngOnInit() {
     this.updateUserData();
-    this.dataService.updateProfile=this;
+    this.dataService.profile=this;
   }
 
   goToEditInfo()
@@ -45,6 +45,7 @@ export class ProfilePageComponent implements OnInit {
     this.fullpage_api.moveSlideLeft();
   }
 
+  //Sends updated info to the Backend
   updateUserData() {
 
     this.dataService.getUserName({}).subscribe(data => {

@@ -11,14 +11,15 @@ export class EhpPageComponent implements OnInit {
   @ViewChild("lineCanvas", { static: false }) lineCanvas;
   lineChart: any;
 
-  start_date = false;
-  end_date = false;
-
+  //Start Date
   sd;
+  //End Date
   ed;
 
+  //Array for graph datasets
   consumption = [];
   production = [];
+  //Array for graph label
   labels = [];
 
   constructor(private dataService: WebService) { }
@@ -44,11 +45,13 @@ export class EhpPageComponent implements OnInit {
     d = event.value;
     this.ed = d;
   }
-
+  //Initialize graph
   lineChartMethod() {
+    //default values
     let active_data_c = [65, 59, 80, 81, 56, 55, 40, 10, 5, 50, 10, 15];
     let active_data_p = [40, 10, 5, 50, 10, 15, 65, 59, 80, 81, 56, 55];
 
+    //default values
     let active_labels = [
       "January",
       "February",
@@ -118,33 +121,13 @@ export class EhpPageComponent implements OnInit {
     });
   }
 
+  //Updates Graph based on Backend's data
   updateChart(obj) {
 
+    //start date must be before end date
     if (obj.sd > obj.ed) {
       return;
     }
-
-    let dates = [];
-    let active_date = new Date(obj.sd);
-
-    while (active_date < obj.ed) {
-      active_date.setDate(active_date.getDate() + 1);
-      dates.push(new Date(active_date));
-    }
-
-    //labels and datasets
-    let active_data = [];
-    let active_data2 = [];
-    let active_labels = [];
-
-    dates.forEach(element => {
-      let date = new Date(element);
-
-      //pushing data
-      active_labels.push(date.getDate() + " / " + date.getMonth() + 1);
-      active_data.push(this.getRandomInt(60));
-      active_data2.push(this.getRandomInt(50));
-    });
 
     //Setting object to the chart
     obj.lineChart.data.labels = this.labels;
@@ -157,6 +140,7 @@ export class EhpPageComponent implements OnInit {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
+  //Downloads Energy Data From Backend
   downloadEnergyData() {
     console.log("downloading ehp data...", this.sd);
     console.log("END date", this.ed);
@@ -177,6 +161,7 @@ export class EhpPageComponent implements OnInit {
           this.production.push(productionToAdd);
           this.consumption.push(consumptionToAdd);
         }
+        //updates graph
         this.updateChart(this);
 
       });

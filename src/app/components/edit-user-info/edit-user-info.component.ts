@@ -56,7 +56,7 @@ export class EditUserInfoComponent implements OnInit {
     this.dataService.user_name=this.name;
     this.dataService.user_surname=this.surname;
     this.dataService.user_houseNumber=this.houseNumber;
-    this.dataService.updateProfile.updateUserData();
+    this.dataService.profile.updateUserData();
   }
 
   sendUserData() {

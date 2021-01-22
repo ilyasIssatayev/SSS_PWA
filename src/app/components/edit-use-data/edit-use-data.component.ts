@@ -15,6 +15,7 @@ export class EditUseDataComponent implements OnInit {
   surname;
   houseNumber;
 
+  //Buttons configaruations
   @Input()
   leftButtonName;
   @Input()
@@ -25,6 +26,7 @@ export class EditUseDataComponent implements OnInit {
   @Input()
   rightButtonCallback;
 
+  //reference to API
   @Input()
   fullpage_api;
 

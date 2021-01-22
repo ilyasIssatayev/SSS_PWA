@@ -18,7 +18,7 @@ export class WebService {
   constructor(private http: HttpClient) {}
 
   //local cached variables
-  updateProfile;
+  profile;
   user_name
   user_surname
   user_houseNumber
@@ -322,6 +322,13 @@ export class WebService {
   getTariff() {
     return this.http.get<any>(
       `${this.url}/admin/tariff`,
+      this.httpOptionsToken
+    );
+  }
+  postTariff(data) {
+    return this.http.put<any>(
+      `${this.url}/admin/tariff`,
+      data,
       this.httpOptionsToken
     );
   }
